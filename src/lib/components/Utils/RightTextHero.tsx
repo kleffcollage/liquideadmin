@@ -17,7 +17,7 @@ function RightTextHero({ main, submain, shortinfo, img }: propTypes) {
 			<Flex
 				w={["full", "40%"]}
 				mr={["0", "-10% !important"]}
-				mt={["-26% !important", 0]}
+				mt={["-26% !important", "0 !important"]}
 				h={["23rem", "30rem"]}
 				bg="rgba(255,255,255,0.7)"
 				align="center"

@@ -21,7 +21,7 @@ function MainHero({ main, submain, shortinfo, height, img }: propTypes) {
 			<Flex
 				w={["full", "40%"]}
 				ml={["0", "-10% !important"]}
-				mt={["-26% !important", 0]}
+				mt={["-26% !important", " 0 !important"]}
 				h={height}
 				bg="rgba(255,255,255,0.7)"
 				align="center"
