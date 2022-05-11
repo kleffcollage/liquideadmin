@@ -14,6 +14,6 @@ COPY . /usr/src
 RUN yarn 
 
 # start app
-RUN npm build
+RUN yarn build
 EXPOSE 3000
 CMD yarn start
