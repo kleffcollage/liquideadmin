@@ -1,8 +1,8 @@
-import type { DeepPartial, Theme } from '@chakra-ui/react';
+import type { DeepPartial, Theme } from "@chakra-ui/react";
 
-const fonts: DeepPartial<Theme['fonts']> = {
-  body: 'Poppins, sans-serif',
-  heading: 'Poppins, serif',
+const fonts: DeepPartial<Theme["fonts"]> = {
+	body: '"Baloo Bhai 2", cursive',
+	heading: "Poppins, serif",
 };
 
 export default fonts;

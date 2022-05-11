@@ -1,102 +1,255 @@
 import {
-  Box,
-  Container,
-  Divider,
-  Flex,
-  HStack,
-  Image,
-  Text,
-} from '@chakra-ui/react';
+	Box,
+	Container,
+	Divider,
+	Flex,
+	Grid,
+	GridItem,
+	HStack,
+	Image,
+	Text,
+	VStack,
+} from "@chakra-ui/react";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTwitter,
-} from 'react-icons/fa';
+	FaFacebookF,
+	FaInstagram,
+	FaLinkedinIn,
+	FaTwitter,
+} from "react-icons/fa";
 
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import MenuItems from './Props/MenuItems';
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 function Footer() {
-  const router = useRouter();
-  return (
-    <Box
-      w="full"
-      bgColor="brand.200"
-      display={
-        router.pathname.startsWith('/admin') ||
-        router.pathname.startsWith('/user')
-          ? 'none'
-          : 'block'
-      }
-    >
-      <Container maxW="90%" pt="2rem">
-        <Flex
-          justify="space-between"
-          alignItems={['center', 'center']}
-          minH="6rem"
-          flexDirection={['column', 'row']}
-        >
-          <Box>
-            <NextLink href="/">
-              <Image src="/assets/logowhite.png" w="194px" h="45px" />
-            </NextLink>
-          </Box>
-          <Flex
-            textAlign={['center', 'right']}
-            flexDirection={['column', 'row']}
-            my={['2rem', '0']}
-            h={['10rem', 'unset']}
-            justifyContent={['space-between', 'unset']}
-          >
-            <MenuItems
-              text="Know your rights"
-              url="/rights"
-              color="white"
-              p={['0', '0 0 0 6rem']}
-            />
-            <MenuItems
-              text="Terms and Conditions"
-              url=""
-              color="white"
-              p={['0', '0 0 0 6rem']}
-            />
-            <MenuItems
-              text="Privacy Policy"
-              url="/rights"
-              color="white"
-              p={['0', '0 0 0 6rem']}
-            />
-            <MenuItems
-              text="Cookies"
-              url="/rights"
-              color="white"
-              p={['0', '0 0 0 6rem']}
-            />
-          </Flex>
-        </Flex>
-        <Divider />
-        <Flex
-          justify={['', 'space-between']}
-          alignItems="center"
-          minH="6rem"
-          flexDirection={['column', 'row']}
-          mt={['1rem', '0']}
-        >
-          <Text fontSize=".9rem" color="white">
-            Copyright &copy; 2022 FlyPal
-          </Text>
-          <HStack spacing={5} mt={['1rem', '0']}>
-            <FaFacebookF fontSize=".9rem" color="white" />
-            <FaTwitter fontSize=".9rem" color="white" />
-            <FaInstagram fontSize=".9rem" color="white" />
-            <FaLinkedinIn fontSize=".9rem" color="white" />
-          </HStack>
-        </Flex>
-      </Container>
-    </Box>
-  );
+	const router = useRouter();
+	return (
+		<Box
+			w="full"
+			bgColor="brand.200"
+			display={router.pathname.startsWith("/admin") ? "none" : "block"}
+		>
+			<Box bgColor="black" w="full" py="4rem">
+				<Box w="80%" mx="auto">
+					<Grid
+						templateColumns="repeat(3, 1fr)"
+						rowGap="2rem"
+						mb="2.5rem"
+						display={["grid", "flex"]}
+						justifyContent="space-between"
+					>
+						<GridItem>
+							<VStack align="flex-start" spacing={[3, 5]}>
+								<Text
+									color="brand.300"
+									fontSize={["1rem", "18px"]}
+									fontWeight="semibold"
+								>
+									Liquede
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									About Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Contact Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Careers
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									CSR
+								</Text>
+							</VStack>
+						</GridItem>
+						<GridItem>
+							<VStack align="flex-start" spacing={[3, 5]}>
+								<Text
+									color="brand.300"
+									fontSize={["1rem", "18px"]}
+									fontWeight="semibold"
+								>
+									Liquede
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									About Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Contact Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Careers
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									CSR
+								</Text>
+							</VStack>
+						</GridItem>
+						<GridItem>
+							<VStack align="flex-start" spacing={[3, 5]}>
+								<Text
+									color="brand.300"
+									fontSize={["1rem", "18px"]}
+									fontWeight="semibold"
+								>
+									Liquede
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									About Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Contact Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Careers
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									CSR
+								</Text>
+							</VStack>
+						</GridItem>
+						<GridItem>
+							<VStack align="flex-start" spacing={[3, 5]}>
+								<Text
+									color="brand.300"
+									fontSize={["1rem", "18px"]}
+									fontWeight="semibold"
+								>
+									Liquede
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									About Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Contact Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Careers
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									CSR
+								</Text>
+							</VStack>
+						</GridItem>
+						<GridItem>
+							<VStack align="flex-start" spacing={[3, 5]}>
+								<Text
+									color="brand.300"
+									fontSize={["1rem", "18px"]}
+									fontWeight="semibold"
+								>
+									Liquede
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									About Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Contact Us
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									Careers
+								</Text>
+								<Text
+									color="white"
+									fontSize={["14px", "16px"]}
+									fontWeight="400"
+								>
+									CSR
+								</Text>
+							</VStack>
+						</GridItem>
+					</Grid>
+					<Divider borderColor="brand.300" />
+					<Text fontSize={["11px", "14px", "18px"]} color="white" my="1.2rem">
+						Liquede is a product of Liquede Limited, a subsidiary of Oxygen
+						Holdings. Banking services on Liquede are provided by Bank Limited,
+						which is registered with the Central Bank of Nigeria. Payments on
+						Liquede are made via Interswitch; a PCI DSS certified payment
+						platform with bank-level security to ensure your transactions and
+						financial information are kept safe at all times.
+					</Text>
+					<Divider borderColor="brand.300" />
+					<Text fontSize={[".8rem", "1rem"]} color="white" mt="2.5rem">
+						© 2020 Liquede Limited. All rights reserved.
+					</Text>
+				</Box>
+			</Box>
+		</Box>
+	);
 }
 
 export default Footer;
