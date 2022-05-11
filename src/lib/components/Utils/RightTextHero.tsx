@@ -26,7 +26,11 @@ function RightTextHero({ main, submain, shortinfo, img }: propTypes) {
 				zIndex={2}
 			>
 				<Box w="full">
-					<Flex flexWrap="wrap" alignItems="baseline">
+					<Flex
+						flexWrap="wrap"
+						alignItems="baseline"
+						justifyContent={["center", "flex-start"]}
+					>
 						<Text
 							fontSize={["35px", "70px"]}
 							color="black"
@@ -40,14 +44,20 @@ function RightTextHero({ main, submain, shortinfo, img }: propTypes) {
 							fontSize={["30px", "45px"]}
 							fontWeight="medium"
 							lineHeight="1"
+							textAlign={["center", "left"]}
 						>
 							{submain}
 						</Text>
 					</Flex>
-					<Text fontSize={["1rem", "20px"]} fontWeight="regular" my="1.5rem">
+					<Text
+						fontSize={["1rem", "20px"]}
+						fontWeight="400"
+						textAlign={["justify", "left"]}
+						my="1.5rem"
+					>
 						{shortinfo}
 					</Text>
-					<Button>Get Liquede</Button>
+					<Button w={["full", "18rem"]}>Get Liquede</Button>
 				</Box>
 			</Flex>
 			<Box w={["full", "60%"]} h={["15rem", "30rem"]} zIndex={1}>

@@ -3,18 +3,18 @@ import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 function CardAd() {
 	return (
 		<Box w={["90%", "81%"]} pos="relative" mb="3rem !important">
-			<Box w={["full", "380px"]} h="18rem" bg="brand.300" />
+			<Box w={["full", "380px"]} h={["21rem", "18rem"]} bg="brand.300" />
 			<Flex
 				w="100%"
 				mx="auto"
 				bgColor="black"
-				h="18rem"
+				h={["auto", "18rem"]}
 				pl={["1rem", "2rem"]}
 				pr="1rem"
 				py="1rem"
 				pos="absolute"
-				top={["6%", "16%"]}
-				left="4%"
+				top={["5%", "16%"]}
+				left={["0", "4%"]}
 				justify="space-between"
 				alignItems="center"
 				flexDirection={["column", "row"]}

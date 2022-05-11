@@ -30,7 +30,11 @@ function MainHero({ main, submain, shortinfo, height, img }: propTypes) {
 				zIndex={2}
 			>
 				<Box w="full">
-					<Flex flexWrap="wrap" alignItems="baseline">
+					<Flex
+						flexWrap="wrap"
+						alignItems="baseline"
+						justifyContent={["center", "flex-start"]}
+					>
 						<Text
 							fontSize={["35px", "70px"]}
 							color="black"
@@ -43,6 +47,7 @@ function MainHero({ main, submain, shortinfo, height, img }: propTypes) {
 						<Text
 							fontSize={["30px", "45px"]}
 							fontWeight="medium"
+							textAlign={["center", "left"]}
 							lineHeight="1"
 						>
 							{submain}
@@ -50,12 +55,13 @@ function MainHero({ main, submain, shortinfo, height, img }: propTypes) {
 					</Flex>
 					<Text
 						fontSize={["1rem", "20px"]}
-						fontWeight="regular"
+						fontWeight="400"
+						textAlign={["justify", "left"]}
 						my={["1rem", "1.5rem"]}
 					>
 						{shortinfo}
 					</Text>
-					<Button>Get Liquede</Button>
+					<Button w={["full", "18rem"]}>Get Liquede</Button>
 				</Box>
 			</Flex>
 		</Stack>
