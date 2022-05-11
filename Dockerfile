@@ -11,9 +11,9 @@ WORKDIR /usr/src
 COPY . /usr/src
 
 # install dependencies
-RUN npm install
+RUN yarn 
 
 # start app
-RUN npm run build
+RUN npm build
 EXPOSE 3000
-CMD npm run start
+CMD yarn start
