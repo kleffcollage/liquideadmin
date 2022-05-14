@@ -1,4 +1,11 @@
-import { Link } from "./api";
+// import { Link } from "./api";
+export interface Link {
+	href?: null | string;
+	relations?: null | Array<string>;
+	method?: null | string;
+	routeName?: null | string;
+	routeValues?: any;
+}
 
 export const UserTypes = {
 	ADMIN_USER: "ADMIN_USER",
