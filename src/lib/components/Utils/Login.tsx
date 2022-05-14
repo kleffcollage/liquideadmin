@@ -96,7 +96,7 @@ function Login() {
 							Glad you're back!
 						</Text>
 						<Box display="flex" justifyContent="center" w="full" my="2rem">
-							<Image src="/assets/padlock.png" w="auto" h="full" />
+							<Image src="/assets/padlock.png" />
 						</Box>
 						<form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
 							<VStack w="full" spacing=".7rem">
