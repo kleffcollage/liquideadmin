@@ -1,14 +1,8 @@
-import { Box, Flex, HStack } from "@chakra-ui/react";
+import Login from "lib/components/Utils/Login";
+import React from "react";
 
-function login() {
-	return (
-		<Flex>
-			<HStack>
-				<Box w="50%"></Box>
-				<Box w="50%"></Box>
-			</HStack>
-		</Flex>
-	);
+function index() {
+	return <Login />;
 }
 
-export default login;
+export default index;

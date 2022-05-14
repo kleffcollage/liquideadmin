@@ -1,4 +1,4 @@
-// import { Link } from "./api";
+import { Link } from "./api";
 
 export const UserTypes = {
 	ADMIN_USER: "ADMIN_USER",
@@ -41,14 +41,19 @@ export interface CoinResult {
 	data: CoinData;
 }
 
-// export interface PagedCollection {
-//   offset?: null | number;
-//   limit?: null | number;
-//   size?: number;
-//   first?: Link;
-//   previous?: Link;
-//   next?: Link;
-//   last?: Link;
-//   self?: Link;
-//   value?: null | Array<any>;
-// }
+export interface LoginModel {
+	email: string;
+	password: string;
+}
+
+export interface PagedCollection {
+	offset?: null | number;
+	limit?: null | number;
+	size?: number;
+	first?: Link;
+	previous?: Link;
+	next?: Link;
+	last?: Link;
+	self?: Link;
+	value?: null | Array<any>;
+}
