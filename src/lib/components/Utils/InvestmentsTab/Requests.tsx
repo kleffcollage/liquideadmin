@@ -1,11 +1,9 @@
 import {
 	Box,
-	Flex,
 	HStack,
 	Input,
 	InputGroup,
 	InputLeftElement,
-	Select,
 	Table,
 	TableContainer,
 	Tbody,
@@ -14,12 +12,8 @@ import {
 	Tr,
 } from "@chakra-ui/react";
 import Pagination from "lib/components/Utilities/Pagination";
-import {
-	TableActions,
-	TableData,
-	TableDataWithAvatar,
-	TableHead,
-} from "lib/components/Utilities/Tables";
+import { TableData, TableHead } from "lib/components/Utilities/Tables";
+import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 const moment = require("moment");
 
@@ -85,16 +79,18 @@ function Requests() {
 						</Thead>
 
 						<Tbody>
-							<Tr>
-								{/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
-								<TableData name="3 Bedroom Terrace" />
-								<TableData name="Pade Omotosho" />
-								<TableData name="Lagos" />
-								<TableData name="Lekki" />
-								<TableData name="Sangotedo" />
-								<TableData name="₦40,000,000" />
-								<TableData name="Pending" />
-							</Tr>
+							<Link href={"/admin/investments/requests/" + 1} key={1}>
+								<Tr>
+									{/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
+									<TableData name="3 Bedroom Terrace" />
+									<TableData name="Pade Omotosho" />
+									<TableData name="Lagos" />
+									<TableData name="Lekki" />
+									<TableData name="Sangotedo" />
+									<TableData name="₦40,000,000" />
+									<TableData name="Pending" />
+								</Tr>
+							</Link>
 							<Tr>
 								{/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
 								<TableData name="3 Bedroom Terrace" />

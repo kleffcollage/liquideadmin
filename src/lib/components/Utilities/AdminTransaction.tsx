@@ -1,5 +1,6 @@
 import {
 	Box,
+	Checkbox,
 	Flex,
 	HStack,
 	Input,
@@ -19,11 +20,16 @@ import {
 	TableHead,
 	TableStatus,
 } from "lib/components/Utilities/Tables";
+import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 const moment = require("moment");
 
 function AdminTransaction() {
 	// const complaints = complains.value;
+	const [checkedItems, setCheckedItems] = useState([false, false]);
+
+	const allChecked = checkedItems.every(Boolean);
+	const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
 
 	return (
 		<>
@@ -116,6 +122,17 @@ function AdminTransaction() {
 					<Table variant="simple">
 						<Thead>
 							<Tr w="full" bgColor="rgba(0,0,0,.03)" h="3rem">
+								<th>
+									<Checkbox
+										h="3rem"
+										pl="1rem"
+										colorScheme="transparent"
+										iconColor="black"
+										iconSize=".5rem"
+										size="lg"
+										borderColor="black"
+									></Checkbox>
+								</th>
 								<TableHead title="User" />
 								<TableHead title="Amount" />
 								<TableHead title="Type" />
@@ -131,6 +148,16 @@ function AdminTransaction() {
 						<Tbody>
 							<Tr>
 								{/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
+								<td>
+									<Checkbox
+										colorScheme="transparent"
+										iconColor="black"
+										pl="1rem"
+										iconSize=".5rem"
+										size="lg"
+										borderColor="black"
+									></Checkbox>
+								</td>
 								<TableData name="Pade Omotosho" />
 								<TableData name="₦4,320" />
 								<TableData name="Fund Goal" />
@@ -143,6 +170,16 @@ function AdminTransaction() {
 							</Tr>
 							<Tr>
 								{/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
+								<td>
+									<Checkbox
+										colorScheme="transparent"
+										iconColor="black"
+										pl="1rem"
+										iconSize=".5rem"
+										size="lg"
+										borderColor="black"
+									></Checkbox>
+								</td>
 								<TableData name="Pade Omotosho" />
 								<TableData name="₦4,320" />
 								<TableData name="Fund Goal" />

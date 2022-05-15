@@ -16,10 +16,9 @@ export default function TopNav() {
 			w="full"
 			px={7}
 			justifyContent="space-between"
-			// display={router.pathname === "/admin/settings" ? "none" : "flex"}
 		>
 			<Text fontSize="22px" fontWeight="bold" textTransform="capitalize">
-				{router.pathname.replace("/admin/", "")}
+				{router.pathname.replace("/admin/", "").split("/")[0]}
 			</Text>
 			<Flex align="center">
 				<Text fontWeight="600" fontSize="1rem" pr=".8rem">
