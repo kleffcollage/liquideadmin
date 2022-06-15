@@ -16,7 +16,6 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { LoginModel } from "types/AppTypes";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 import { Widget } from "@uploadcare/react-widget";
 
@@ -26,6 +25,8 @@ function AddMatch({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 		register,
 		formState: { errors, isValid },
 	} = useForm<LoginModel>();
+	type NewType = LoginModel;
+
 	return (
 		<Modal
 			motionPreset="slideInBottom"
@@ -68,7 +69,7 @@ function AddMatch({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 									<HStack align="flex-start" justify="space-between">
 										<SimpleGrid columns={2} gap={4}>
 											<GridItem colSpan={2}>
-												<PrimaryInput<LoginModel>
+												<PrimaryInput<NewType>
 													register={register}
 													name="password"
 													error={errors.password}

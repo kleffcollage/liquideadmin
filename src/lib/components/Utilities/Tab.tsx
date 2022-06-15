@@ -15,7 +15,7 @@ function Tab({ tabname, currentTab }: tabTypes) {
 			cursor="pointer"
 			fontWeight="medium"
 			fontSize=".9rem"
-			textTransform="capitalize"
+			textTransform={tabname == "slipcard" ? "uppercase" : "capitalize"}
 			borderRadius="2px 16px 0 0"
 			bgColor={currentTab == tabname ? "black" : "rgba(36,68,115,0.03)"}
 			transition="all .2s ease"

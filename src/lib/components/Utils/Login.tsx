@@ -15,11 +15,11 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "lib/Utils/MainContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginModel } from "types/AppTypes";
 import { useOperationMethod } from "react-openapi-client";
 import { useToasts } from "react-toast-notifications";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { LoginModel } from "types/api";
 const schema = yup.object().shape({
 	email: yup.string().required("Email is required"),
 	password: yup.string().required("Password is required"),
