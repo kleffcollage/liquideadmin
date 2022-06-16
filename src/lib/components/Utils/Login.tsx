@@ -11,7 +11,7 @@ import {
 import { PrimaryInput } from "lib/components/Utilities/PrimaryInput";
 import NextLink from "next/link";
 import { useForm } from "react-hook-form";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "lib/Utils/MainContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -20,17 +20,18 @@ import { useOperationMethod } from "react-openapi-client";
 import { useToasts } from "react-toast-notifications";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { AdminService, UserViewStandardResponse } from "services";
 const schema = yup.object().shape({
 	email: yup.string().required("Email is required"),
 	password: yup.string().required("Password is required"),
 });
 
 function Login() {
-	const [logUserIn, { data, loading, error }] =
-		useOperationMethod("Admintoken");
+	
 	const router = useRouter();
 	const { setAdmin } = useContext(UserContext);
 	const { addToast } = useToasts();
+	const [loading, setLoading] = useState<boolean>(false)
 	const {
 		handleSubmit,
 		register,
@@ -42,24 +43,24 @@ function Login() {
 
 	const onSubmit = async (data: LoginModel) => {
 		try {
-			const result = await logUserIn(undefined, data);
+			setLoading(true)
+			const result = await AdminService.authenticate(data) as UserViewStandardResponse;
 			console.log(data);
-			const value = result.data;
-			console.log({ value });
-			if (value.status) {
+			if (result.status) {
 				addToast("Login Successful", {
 					appearance: "success",
 					autoDismiss: true,
 				});
-				setAdmin(value.data);
-				Cookies.set("token", value.data.token);
-				localStorage.setItem("admin", JSON.stringify(value.data));
+				setAdmin(result.data);
+				result.data && Cookies.set("token", result.data.token as string);
 				router.push("/admin/dashboard");
 				return;
 			}
-			addToast(value.message, { appearance: "error", autoDismiss: true });
+			setLoading(false)
+			addToast(result.message, { appearance: "error", autoDismiss: true });
 			return;
 		} catch (error) {
+			setLoading(false)
 			console.log(error);
 		}
 	};

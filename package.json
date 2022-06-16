@@ -21,7 +21,8 @@
 		"schema:hooks": "openapi --input ./src/types/api-schema.json --output ./src/types",
 		"schema:generate": "node ./script/schema-codegen.js --srcPath ./src/types/api-schema.json --destPath ./src/types/api --separatedFiles true",
 		"schema:codegen": "yarn schema:fetch && yarn schema:generate",
-		"format-staged": "pretty-quick --staged"
+		"format-staged": "pretty-quick --staged",
+		"openapi:codegen": "openapi --input https://liquideapi.herokuapp.com/swagger/v1/swagger.json --output ./src/services --client axios"
 	},
 	"dependencies": {
 		"@babel/preset-env": "^7.16.11",
@@ -40,13 +41,14 @@
 		"chart.js": "^3.7.1",
 		"eslint-import-resolver-typescript": "^2.7.1",
 		"file-saver": "^2.0.5",
+		"form-data": "^4.0.0",
 		"framer-motion": "^6",
 		"js-cookie": "^3.0.1",
 		"moment": "^2.29.3",
 		"next": "^12.1.0",
 		"next-pwa": "^5.4.6",
 		"next-seo": "^5.3.0",
-		"openapi-typescript-codegen": "^0.21.0",
+		"openapi-typescript-codegen": "^0.23.0",
 		"react": "^17.0.2",
 		"react-calendar": "^3.7.0",
 		"react-chartjs-2": "^4.1.0",
