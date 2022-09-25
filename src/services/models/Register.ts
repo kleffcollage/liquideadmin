@@ -10,4 +10,3 @@ export type Register = {
     middleName?: string | null;
     phoneNumber?: string | null;
 };
-

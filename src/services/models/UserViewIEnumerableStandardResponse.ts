@@ -16,4 +16,3 @@ export type UserViewIEnumerableStandardResponse = {
     statusCode?: string | null;
     errors?: any;
 };
-

@@ -8,4 +8,3 @@ export type WalletModel = {
     currency?: string | null;
     walletTypeId?: number;
 };
-

@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CardViewIEnumerableStandardResponse } from '../models/CardViewIEnumerableStandardResponse';
 import type { DebitWalletModel } from '../models/DebitWalletModel';
 import type { FundWalletModel } from '../models/FundWalletModel';
 import type { Int32StandardResponse } from '../models/Int32StandardResponse';
@@ -20,13 +21,13 @@ import { request as __request } from '../core/request';
 export class WalletService {
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns WalletViewStandardResponse Success
      * @throws ApiError
      */
     public static createUserWallet(
-        requestBody?: WalletModel,
-    ): CancelablePromise<WalletViewStandardResponse> {
+requestBody?: WalletModel,
+): CancelablePromise<WalletViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/create',
@@ -36,13 +37,13 @@ export class WalletService {
     }
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns WalletViewStandardResponse Success
      * @throws ApiError
      */
     public static createTransactionPin(
-        requestBody?: WalletPinModel,
-    ): CancelablePromise<WalletViewStandardResponse> {
+requestBody?: WalletPinModel,
+): CancelablePromise<WalletViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/create/pin',
@@ -52,13 +53,13 @@ export class WalletService {
     }
 
     /**
-     * @param userId
+     * @param userId 
      * @returns Int32StandardResponse Success
      * @throws ApiError
      */
     public static getTransactionPin(
-        userId: number,
-    ): CancelablePromise<Int32StandardResponse> {
+userId: number,
+): CancelablePromise<Int32StandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/pin/{userId}',
@@ -69,13 +70,13 @@ export class WalletService {
     }
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns StringStandardResponse Success
      * @throws ApiError
      */
     public static fundWallet(
-        requestBody?: FundWalletModel,
-    ): CancelablePromise<StringStandardResponse> {
+requestBody?: FundWalletModel,
+): CancelablePromise<StringStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/fund',
@@ -85,13 +86,13 @@ export class WalletService {
     }
 
     /**
-     * @param userId
+     * @param userId 
      * @returns TransactionViewPagedCollectionStandardResponse Success
      * @throws ApiError
      */
     public static walletBalance(
-        userId?: number,
-    ): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
+userId?: number,
+): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/balance',
@@ -102,15 +103,15 @@ export class WalletService {
     }
 
     /**
-     * @param transactionReference
-     * @param transactionId
+     * @param transactionReference 
+     * @param transactionId 
      * @returns PaymentViewStandardResponse Success
      * @throws ApiError
      */
     public static validatePayment(
-        transactionReference: string | null,
-        transactionId: number,
-    ): CancelablePromise<PaymentViewStandardResponse> {
+transactionReference: string | null,
+transactionId: number,
+): CancelablePromise<PaymentViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/payment/validate/{transactionReference}/{transactionId}',
@@ -122,13 +123,13 @@ export class WalletService {
     }
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns WalletViewStandardResponse Success
      * @throws ApiError
      */
     public static transferToNigerianBank(
-        requestBody?: NGNTransferModel,
-    ): CancelablePromise<WalletViewStandardResponse> {
+requestBody?: NGNTransferModel,
+): CancelablePromise<WalletViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/transfer/nigerianbank',
@@ -138,21 +139,21 @@ export class WalletService {
     }
 
     /**
-     * @param userId
-     * @param startDate
-     * @param endDate
-     * @param offset
-     * @param limit
+     * @param userId 
+     * @param startDate 
+     * @param endDate 
+     * @param offset 
+     * @param limit 
      * @returns TransactionViewPagedCollectionStandardResponse Success
      * @throws ApiError
      */
     public static statementOfAccount(
-        userId: number,
-        startDate: string,
-        endDate: string,
-        offset?: number | null,
-        limit?: number | null,
-    ): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
+userId: number,
+startDate: string,
+endDate: string,
+offset?: number | null,
+limit?: number | null,
+): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/statementOfAccount/{userId}/{startDate}/{endDate}',
@@ -169,13 +170,13 @@ export class WalletService {
     }
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns WalletViewStandardResponse Success
      * @throws ApiError
      */
     public static transferToWallet(
-        requestBody?: WalletTransferModel,
-    ): CancelablePromise<WalletViewStandardResponse> {
+requestBody?: WalletTransferModel,
+): CancelablePromise<WalletViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/transfer',
@@ -185,19 +186,19 @@ export class WalletService {
     }
 
     /**
-     * @param userId
-     * @param offset
-     * @param limit
-     * @param search
+     * @param userId 
+     * @param offset 
+     * @param limit 
+     * @param search 
      * @returns TransactionViewPagedCollectionStandardResponse Success
      * @throws ApiError
      */
     public static listTransactions(
-        userId: number,
-        offset?: number | null,
-        limit?: number | null,
-        search?: string | null,
-    ): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
+userId: number,
+offset?: number | null,
+limit?: number | null,
+search?: string | null,
+): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/transaction/{userId}/list',
@@ -213,13 +214,13 @@ export class WalletService {
     }
 
     /**
-     * @param requestBody
+     * @param requestBody 
      * @returns WalletViewStandardResponse Success
      * @throws ApiError
      */
     public static debitWallet(
-        requestBody?: DebitWalletModel,
-    ): CancelablePromise<WalletViewStandardResponse> {
+requestBody?: DebitWalletModel,
+): CancelablePromise<WalletViewStandardResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/Wallet/debit',
@@ -229,17 +230,17 @@ export class WalletService {
     }
 
     /**
-     * @param userId
-     * @param offset
-     * @param limit
+     * @param userId 
+     * @param offset 
+     * @param limit 
      * @returns TransactionViewPagedCollectionStandardResponse Success
      * @throws ApiError
      */
     public static listCardsByUserId(
-        userId: number,
-        offset?: number | null,
-        limit?: number | null,
-    ): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
+userId: number,
+offset?: number | null,
+limit?: number | null,
+): CancelablePromise<TransactionViewPagedCollectionStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/Wallet/card/{userId}/list',
@@ -250,6 +251,17 @@ export class WalletService {
                 'Offset': offset,
                 'Limit': limit,
             },
+        });
+    }
+
+    /**
+     * @returns CardViewIEnumerableStandardResponse Success
+     * @throws ApiError
+     */
+    public static listCards(): CancelablePromise<CardViewIEnumerableStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/Wallet/cards/list',
         });
     }
 

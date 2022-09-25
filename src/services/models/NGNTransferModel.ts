@@ -9,4 +9,3 @@ export type NGNTransferModel = {
     narration?: string | null;
     userId?: number;
 };
-

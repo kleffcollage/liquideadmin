@@ -9,5 +9,5 @@ export type PaymentView = {
     status?: string | null;
     wallet?: Wallet;
     transaction?: Transaction;
+    message?: string | null;
 };
-

@@ -1,7 +1,7 @@
-import { Flex, Icon, Square, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { PagedCollection } from 'types/AppTypes';
+import { Button, Flex, Icon, Square, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { PagedCollection } from "types/AppTypes";
 
 function Pagination({ data }: { data: PagedCollection }) {
   const totalPages = Math.ceil(
@@ -16,21 +16,28 @@ function Pagination({ data }: { data: PagedCollection }) {
   const next = data.next?.href;
   const previous = data.previous?.href;
 
-  const paginate = (direction: 'next' | 'previous') => {
-    let link = '';
-    if (direction == 'previous' && previous != null) {
-      link = previous!.split('?')[1];
+  const paginate = (direction: "next" | "previous") => {
+    let link = "";
+    if (direction == "previous" && previous != null) {
+      let url = new URL(previous!);
+      const limit = url.searchParams.get("limit");
+      const offset = url.searchParams.get("offset");
       router.push({
         query: {
-          url: link,
+          limit: limit,
+          offset: offset,
         },
       });
     }
-    if (direction == 'next' && next != null) {
-      link = next!.split('?')[1];
+    if (direction == "next" && next != null) {
+      link = next!.split("?")[1];
+      let url = new URL(next!);
+      const limit = url.searchParams.get("limit");
+      const offset = url.searchParams.get("offset");
       router.push({
         query: {
-          url: link,
+          limit: limit,
+          offset: offset,
         },
       });
     }
@@ -41,29 +48,33 @@ function Pagination({ data }: { data: PagedCollection }) {
         {`${data.size || 0} items`}
       </Text>
       <Flex align="center">
-        <Square
-          size="30px"
+        <Button
+          w="fit-content"
           borderRadius="2px"
           boxShadow="0px 1px 4px rgba(0, 0, 0, 0.14)"
           bgColor="#E2E8F0;"
           cursor="pointer"
-          onClick={() => paginate('previous')}
+          disabled={previous == null}
+          onClick={() => paginate("previous")}
+          _hover={{ color: "white" }}
         >
           <Icon as={FiChevronLeft} color="#323232" fontSize="1.2rem" />
-        </Square>
+        </Button>
         <Text fontSize="14px" fontFamily="Poppins" px="1.5rem" color="black">
           {`${currentPage} of ${totalPages}`}
         </Text>
-        <Square
-          size="30px"
+        <Button
+          w="fit-content"
           borderRadius="2px"
           boxShadow="0px 1px 4px rgba(0, 0, 0, 0.14)"
           bgColor="#E2E8F0;"
           cursor="pointer"
-          onClick={() => paginate('next')}
+          disabled={next == null}
+          onClick={() => paginate("next")}
+          _hover={{ color: "white" }}
         >
           <Icon as={FiChevronRight} color="#323232" fontSize="1.2rem" />
-        </Square>
+        </Button>
       </Flex>
     </Flex>
   );

@@ -16,4 +16,3 @@ export type WalletViewStandardResponse = {
     statusCode?: string | null;
     errors?: any;
 };
-

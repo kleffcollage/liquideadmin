@@ -6,4 +6,3 @@ export type WalletPinModel = {
     userId?: number;
     pin?: number;
 };
-

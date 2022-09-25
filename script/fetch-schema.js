@@ -1,7 +1,7 @@
-const axios = require('axios');
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const axios = require("axios");
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 const instance = axios.create({
   httpsAgent: new https.Agent({
@@ -20,7 +20,7 @@ function addOperationIdsToSchema(schema) {
     const operations = Object.keys(data.paths[endpointPath]);
 
     operations.forEach((operation) => {
-      const oprationName = endpointPath.replace('/api/', '').replace(/\//g, '');
+      const oprationName = endpointPath.replace("/api/", "").replace(/\//g, "");
       data.paths[endpointPath][operation].operationId = oprationName;
     });
   });
@@ -29,18 +29,18 @@ function addOperationIdsToSchema(schema) {
 }
 
 instance
-  .get('https://flypalapi.herokuapp.com/swagger/v1/swagger.json')
+  .get("https://liquideapi.herokuapp.com/swagger/v1/swagger.json")
   .then((response) => {
     const updatedSchema = addOperationIdsToSchema(response.data);
     fs.writeFileSync(
-      path.resolve(__dirname, '../src/types/api-schema.json'),
+      path.resolve(__dirname, "../src/types/api-schema.json"),
       JSON.stringify(updatedSchema, null, 2)
     );
     fs.writeFileSync(
-      path.resolve(__dirname, '../public/api-schema.json'),
+      path.resolve(__dirname, "../public/api-schema.json"),
       JSON.stringify(updatedSchema, null, 2)
     );
 
-    console.log('==> Schema fetched successfully...');
+    console.log("==> Schema fetched successfully...");
   })
   .catch(console.error);

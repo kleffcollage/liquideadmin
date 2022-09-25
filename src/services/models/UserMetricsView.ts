@@ -7,4 +7,3 @@ export type UserMetricsView = {
     resolvedComplaints?: number;
     declinedComplaints?: number;
 };
-

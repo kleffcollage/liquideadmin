@@ -14,4 +14,3 @@ export type Int32StandardResponse = {
     statusCode?: string | null;
     errors?: any;
 };
-

@@ -16,4 +16,3 @@ export type TransactionViewPagedCollectionStandardResponse = {
     statusCode?: string | null;
     errors?: any;
 };
-

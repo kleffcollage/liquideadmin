@@ -14,4 +14,3 @@ export type UserView = {
     phoneNumber?: string | null;
     metrics?: UserMetricsView;
 };
-

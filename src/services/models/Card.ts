@@ -18,4 +18,3 @@ export type Card = {
     token?: string | null;
     expiry?: string | null;
 };
-

@@ -9,4 +9,3 @@ export type WalletTransferModel = {
     recipientUserId?: number;
     description?: string | null;
 };
-

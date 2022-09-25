@@ -3,7 +3,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 export interface cardType {
 	label: string;
 	increase: string;
-	value: string | number;
+	value: string | number | undefined;
 }
 function MiniCards({ label, increase, value }: cardType) {
 	return (

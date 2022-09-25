@@ -11,4 +11,3 @@ export type MediaModel = {
     isVideo?: boolean;
     isDocument?: boolean;
 };
-

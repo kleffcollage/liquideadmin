@@ -6,4 +6,3 @@ export type FundWalletModel = {
     amount?: string | null;
     userId?: number;
 };
-

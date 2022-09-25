@@ -8,4 +8,3 @@ export type WalletView = {
     currency?: string | null;
     walletType?: string | null;
 };
-

@@ -20,4 +20,3 @@ export type Wallet = {
     pin?: number;
     status?: Status;
 };
-

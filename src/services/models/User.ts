@@ -4,6 +4,7 @@
 
 import type { Card } from './Card';
 import type { Code } from './Code';
+import type { SavingPlans } from './SavingPlans';
 import type { Transaction } from './Transaction';
 import type { Wallet } from './Wallet';
 
@@ -36,5 +37,5 @@ export type User = {
     cards?: Array<Card> | null;
     transactions?: Array<Transaction> | null;
     wallet?: Wallet;
+    savings?: Array<SavingPlans> | null;
 };
-
