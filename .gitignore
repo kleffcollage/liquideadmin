@@ -46,3 +46,10 @@ sitemap*.xml
 .next/build-manifest.json
 .next/cache
 .next/server
+.next/build-manifest.json
+.next/server/pages-manifest.json
+
+**/.next/cache
+**/.next/server
+**/.next/build-manifest.json
+**/.next/server/pages-manifest.json
