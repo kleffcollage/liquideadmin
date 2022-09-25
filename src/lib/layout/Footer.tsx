@@ -31,8 +31,6 @@ function Footer() {
         router.pathname.startsWith("/payment")
           ? "none"
           : "block"
-          ? "none"
-          : "block"
       }
     >
       <Box bgColor="black" w="full" py="4rem">
@@ -241,7 +239,12 @@ function Footer() {
             </GridItem>
           </Grid>
           <Divider borderColor="brand.300" />
-          <Text fontSize={["11px", "14px", "18px"]} color="white" my="1.2rem">
+          <Text
+            fontSize={["11px", "14px", "18px"]}
+            color="white"
+            my="1.2rem"
+            textAlign="justify"
+          >
             Liquede is a product of Liquede Limited, a subsidiary of Oxygen
             Holdings. Banking services on Liquede are provided by Bank Limited,
             which is registered with the Central Bank of Nigeria. Payments on
