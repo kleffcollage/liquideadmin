@@ -15,7 +15,7 @@ import {
 	VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { LoginModel } from "types/AppTypes";
+import { Register } from "types/api";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 
 function AddNewAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
@@ -23,7 +23,7 @@ function AddNewAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 		handleSubmit,
 		register,
 		formState: { errors, isValid },
-	} = useForm<LoginModel>();
+	} = useForm<Register>();
 	return (
 		<Modal
 			motionPreset="slideInBottom"
@@ -64,18 +64,18 @@ function AddNewAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 								<form>
 									<SimpleGrid columns={2} gap={3}>
 										<GridItem colSpan={2}>
-											<PrimaryInput<LoginModel>
+											<PrimaryInput<Register>
 												register={register}
 												name="password"
 												error={errors.password}
 												defaultValue=""
 												type="text"
-												label="Plan name"
+												label="First name"
 												placeholder="First Name"
 											/>
 										</GridItem>
 										<GridItem colSpan={2}>
-											<PrimaryInput<LoginModel>
+											<PrimaryInput<Register>
 												register={register}
 												name="password"
 												error={errors.password}
@@ -86,7 +86,7 @@ function AddNewAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 											/>
 										</GridItem>
 										<GridItem colSpan={2}>
-											<PrimaryInput<LoginModel>
+											<PrimaryInput<Register>
 												register={register}
 												name="password"
 												error={errors.password}

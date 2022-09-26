@@ -15,7 +15,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "lib/Utils/MainContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginModel } from "types/AppTypes";
 import { useOperationMethod } from "react-openapi-client";
 import { useToasts } from "react-toast-notifications";
 import { useRouter } from "next/router";

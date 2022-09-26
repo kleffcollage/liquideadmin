@@ -4,9 +4,9 @@ const fs = require("fs");
 const path = require("path");
 
 const instance = axios.create({
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false,
-  }),
+	httpsAgent: new https.Agent({
+		rejectUnauthorized: false,
+	}),
 });
 
 /* The code below will create operation names.
@@ -14,10 +14,10 @@ Instead of `/api/User/GetList` you'll get `UserGetList` type
 that you can use anywhere */
 
 function addOperationIdsToSchema(schema) {
-  const data = schema;
+	const data = schema;
 
-  Object.keys(data.paths).forEach((endpointPath) => {
-    const operations = Object.keys(data.paths[endpointPath]);
+	Object.keys(data.paths).forEach((endpointPath) => {
+		const operations = Object.keys(data.paths[endpointPath]);
 
     operations.forEach((operation) => {
       const oprationName = endpointPath.replace("/api/", "").replace(/\//g, "");
@@ -25,7 +25,7 @@ function addOperationIdsToSchema(schema) {
     });
   });
 
-  return data;
+	return data;
 }
 
 instance

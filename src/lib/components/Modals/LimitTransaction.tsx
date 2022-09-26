@@ -13,11 +13,17 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
+import { LoginModel } from "types/AppTypes";
 import SuccessModal from "./SuccessModal";
 import { useState } from "react";
-import { LoginModel } from "types/api";
 
-function LimitModal({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
+function LimitTransaction({
+	isOpen,
+	onClose,
+}: {
+	isOpen: boolean;
+	onClose: any;
+}) {
 	const [successOpen, setsuccessOpen] = useState(false);
 	const openModal = () => {
 		setsuccessOpen(true);
@@ -60,7 +66,7 @@ function LimitModal({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 							fontWeight="semibold"
 							px={5}
 						>
-							Limit SLIPCARD
+							Limit Transaction
 						</Text>
 					</ModalHeader>
 					<ModalCloseButton />
@@ -130,4 +136,4 @@ function LimitModal({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
 		</>
 	);
 }
-export default LimitModal;
+export default LimitTransaction;

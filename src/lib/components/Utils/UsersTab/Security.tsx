@@ -1,4 +1,5 @@
 import { Box, Flex, VStack } from "@chakra-ui/react";
+import LimitTransaction from "lib/components/Modals/LimitTransaction";
 import SuccessModal from "lib/components/Modals/SuccessModal";
 import React, { useState } from "react";
 
@@ -10,9 +11,16 @@ function Security() {
 	const closeModal = () => {
 		setsuccessOpen(false);
 	};
+	const [isOpen, setIsOpen] = useState(false);
+	const openIsModal = () => {
+		setIsOpen(true);
+	};
+	const closeIsModal = () => {
+		setIsOpen(false);
+	};
 	return (
 		<VStack w="50%" align="flex-start" spacing={6} mt="2rem !important">
-			<Box w="90%" onClick={openModal}>
+			<Box w="90%" onClick={openIsModal}>
 				<Flex
 					as="button"
 					w="full"
@@ -27,7 +35,7 @@ function Security() {
 					Set Transactions Limit
 				</Flex>
 			</Box>
-			<Box w="90%">
+			<Box w="90%" onClick={openModal}>
 				<Flex
 					as="button"
 					w="full"
@@ -43,10 +51,11 @@ function Security() {
 				</Flex>
 			</Box>
 			<SuccessModal
-				message="You have successfully updated the transaction limit on your SLIPCARD"
+				message="You have successfully reset the user password"
 				isOpen={successOpen}
 				onClose={closeModal}
 			/>
+			<LimitTransaction isOpen={isOpen} onClose={closeIsModal} />
 		</VStack>
 	);
 }
