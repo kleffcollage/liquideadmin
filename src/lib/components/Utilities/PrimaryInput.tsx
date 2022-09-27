@@ -81,6 +81,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
             disabled={disableLabel}
             padding={padding}
             variant="filled"
+            h="3rem"
           />
           <InputRightElement
             pointerEvents="none"

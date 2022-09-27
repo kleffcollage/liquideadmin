@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "FlyPal",
+    "title": "Liquide",
     "version": "v1"
   },
   "paths": {
@@ -175,36 +175,6 @@
         }
       }
     },
-    "/api/Admin/metrics": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "operationId": "Adminmetrics",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Admin/delete/{email}": {
       "get": {
         "tags": [
@@ -239,152 +209,6 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserViewStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Admin/complaints/decline/{id}": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "operationId": "Admincomplaintsdecline{id}",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Admin/complaints/resolve/{id}": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "operationId": "Admincomplaintsresolve{id}",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Admin/complain/list/user/{userId}": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "operationId": "Admincomplainlistuser{userId}",
-        "parameters": [
-          {
-            "name": "Offset",
-            "in": "query",
-            "schema": {
-              "maximum": 99999,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            }
-          },
-          {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32",
-              "nullable": true
-            }
-          },
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
                 }
               }
             }
@@ -433,96 +257,12 @@
         }
       }
     },
-    "/api/Admin/chart/users": {
+    "/api/Admin/loans/list": {
       "get": {
         "tags": [
           "Admin"
         ],
-        "operationId": "Adminchartusers",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Complaints/create": {
-      "post": {
-        "tags": [
-          "Complaints"
-        ],
-        "operationId": "Complaintscreate",
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComplaintsModel"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComplaintsModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComplaintsModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ComplaintsModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Complaints/list/user": {
-      "get": {
-        "tags": [
-          "Complaints"
-        ],
-        "operationId": "Complaintslistuser",
+        "operationId": "Adminloanslist",
         "parameters": [
           {
             "name": "Offset",
@@ -553,17 +293,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
                 }
               }
             }
@@ -571,12 +311,105 @@
         }
       }
     },
-    "/api/Complaints/list": {
+    "/api/Admin/dashboard/metrics": {
       "get": {
         "tags": [
-          "Complaints"
+          "Admin"
         ],
-        "operationId": "Complaintslist",
+        "operationId": "Admindashboardmetrics",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserMetricsStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserMetricsStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserMetricsStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/transactions/{userId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Admintransactions{userId}",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/transactions": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Admintransactions",
         "parameters": [
           {
             "name": "Offset",
@@ -607,17 +440,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
                 }
               }
             }
@@ -625,15 +458,15 @@
         }
       }
     },
-    "/api/Complaints/get/{complaintsId}": {
+    "/api/Admin/transactions/{id}": {
       "get": {
         "tags": [
-          "Complaints"
+          "Admin"
         ],
-        "operationId": "Complaintsget{complaintsId}",
+        "operationId": "Admintransactions{id}",
         "parameters": [
           {
-            "name": "complaintsId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -648,17 +481,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                  "$ref": "#/components/schemas/TransactionViewStandardResponse"
                 }
               }
             }
@@ -666,32 +499,207 @@
         }
       }
     },
-    "/api/Complaints/categories/create": {
-      "post": {
+    "/api/Admin/users/loans/{userId}": {
+      "get": {
         "tags": [
-          "Complaints"
+          "Admin"
         ],
-        "operationId": "Complaintscategoriescreate",
+        "operationId": "Adminusersloans{userId}",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloans{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/savings/plans": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminsavingsplans",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewListStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewListStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewListStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/savings/plans/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminsavingsplans{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/savings/plans/update": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminsavingsplansupdate",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/NameModel"
+                "$ref": "#/components/schemas/SavingPlanType"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NameModel"
+                "$ref": "#/components/schemas/SavingPlanType"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/NameModel"
+                "$ref": "#/components/schemas/SavingPlanType"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/NameModel"
+                "$ref": "#/components/schemas/SavingPlanType"
               }
             }
           }
@@ -702,17 +710,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryStandardResponse"
+                  "$ref": "#/components/schemas/SavingPlanTypeStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryStandardResponse"
+                  "$ref": "#/components/schemas/SavingPlanTypeStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryStandardResponse"
+                  "$ref": "#/components/schemas/SavingPlanTypeStandardResponse"
                 }
               }
             }
@@ -720,29 +728,1465 @@
         }
       }
     },
-    "/api/Complaints/categories/list": {
+    "/api/Admin/loans/pending": {
       "get": {
         "tags": [
-          "Complaints"
+          "Admin"
         ],
-        "operationId": "Complaintscategorieslist",
+        "operationId": "Adminloanspending",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ComplaintsCategoryIEnumerableStandardResponse"
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/approved": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansapproved",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/rejected": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansrejected",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/reviewed": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansreviewed",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/accepted": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansaccepted",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/accept/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansaccept{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/reject/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansreject{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/review/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansreview{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loans/approve/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminloansapprove{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/providers": {
+      "get": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimeproviders",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaxiProvidersResponseStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaxiProvidersResponseStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaxiProvidersResponseStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/purchase": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimepurchase",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirtimePurchaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirtimePurchaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirtimePurchaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AirtimePurchaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/data-providers": {
+      "get": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimedata-providers",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/data-bundle": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimedata-bundle",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataBundlePurchaseInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataBundlePurchaseInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataBundlePurchaseInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataBundlePurchaseInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/data-bundles/{ServiceType}/{AccountNumber}": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimedata-bundles{ServiceType}{AccountNumber}",
+        "parameters": [
+          {
+            "name": "ServiceType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "AccountNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBundleResponseListStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBundleResponseListStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBundleResponseListStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/multichoice/multichoice-account/{ServiceType}/{AccountNumber}": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsmultichoicemultichoice-account{ServiceType}{AccountNumber}",
+        "parameters": [
+          {
+            "name": "ServiceType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "AccountNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultichoiceAccountResponseStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultichoiceAccountResponseStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultichoiceAccountResponseStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/multichoice/renew-subscription": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsmultichoicerenew-subscription",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/multichoice/provider-bouquets/{serviceType}": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsmultichoiceprovider-bouquets{serviceType}",
+        "parameters": [
+          {
+            "name": "serviceType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/multichoice/provider-addons/{ServiceType}/{ProductCode}": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsmultichoiceprovider-addons{ServiceType}{ProductCode}",
+        "parameters": [
+          {
+            "name": "ProductCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "ServiceType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderBouquetResponseListStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/change-cable-tv-subscription": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimechange-cable-tv-subscription",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CableSubscriptionModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CableSubscriptionModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CableSubscriptionModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CableSubscriptionModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/electricity-billers": {
+      "get": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimeelectricity-billers",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataProviderResponseStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/purchase-postpaid-electricity": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimepurchase-postpaid-electricity",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Bills/airtime/purchase-prepaid-electricity": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "operationId": "Billsairtimepurchase-prepaid-electricity",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseElectricityModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AirtimePurchaseViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Loan/apply": {
+      "post": {
+        "tags": [
+          "Loan"
+        ],
+        "operationId": "Loanapply",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Loan/{id}": {
+      "get": {
+        "tags": [
+          "Loan"
+        ],
+        "operationId": "Loan{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Loan/my": {
+      "get": {
+        "tags": [
+          "Loan"
+        ],
+        "operationId": "Loanmy",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanViewIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/plans/types": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsplanstypes",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingPlanTypeIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/plans/liqiede-seal": {
+      "post": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsplansliqiede-seal",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquedeSealInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquedeSealInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquedeSealInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquedeSealInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/plans/liqiede-goal": {
+      "post": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsplansliqiede-goal",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquiedeGoalInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquiedeGoalInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquiedeGoalInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiquiedeGoalInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/plans/retry-payment/{PlanId}/{PaymentMethod}": {
+      "post": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsplansretry-payment{PlanId}{PaymentMethod}",
+        "parameters": [
+          {
+            "name": "PlanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PaymentMethod",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/plans/withdraw-prematurely": {
+      "post": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsplanswithdraw-prematurely",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavingsWithdrawalModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavingsWithdrawalModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavingsWithdrawalModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavingsWithdrawalModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/withdrawalpenaltypercentage": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingswithdrawalpenaltypercentage",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Savings/user": {
+      "get": {
+        "tags": [
+          "Savings"
+        ],
+        "operationId": "Savingsuser",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavingsViewIEnumerableStandardResponse"
                 }
               }
             }
@@ -1259,6 +2703,706 @@
           }
         }
       }
+    },
+    "/api/Wallet/create": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletcreate",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/create/pin": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletcreatepin",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletPinModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletPinModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletPinModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletPinModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/pin/{userId}": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletpin{userId}",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32StandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/fund": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletfund",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FundWalletModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FundWalletModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FundWalletModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FundWalletModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/balance": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletbalance",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/payment/validate/{transactionReference}/{transactionId}": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletpaymentvalidate{transactionReference}{transactionId}",
+        "parameters": [
+          {
+            "name": "transactionReference",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/transfer/nigerianbank": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Wallettransfernigerianbank",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NGNTransferModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NGNTransferModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NGNTransferModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NGNTransferModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/statementOfAccount/{userId}/{startDate}/{endDate}": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "WalletstatementOfAccount{userId}{startDate}{endDate}",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/transfer": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Wallettransfer",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletTransferModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletTransferModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletTransferModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletTransferModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/transaction/{userId}/list": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Wallettransaction{userId}list",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/debit": {
+      "post": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletdebit",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitWalletModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitWalletModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitWalletModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitWalletModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/card/{userId}/list": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletcard{userId}list",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Wallet/cards/list": {
+      "get": {
+        "tags": [
+          "Wallet"
+        ],
+        "operationId": "Walletcardslist",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardViewIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardViewIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardViewIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1531,185 +3675,52 @@
         },
         "additionalProperties": false
       },
-      "DashboardMetricsView": {
+      "LoanView": {
         "type": "object",
         "properties": {
-          "users": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "newUsers": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "resolvedComplaints": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "pendingComplaints": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "declinedComplaints": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DashboardMetricsViewStandardResponse": {
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "nullable": true
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "method": {
-            "type": "string",
-            "default": "GET",
-            "nullable": true
-          },
-          "routeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "routeValues": {
-            "nullable": true
-          },
-          "status": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "data": {
-            "$ref": "#/components/schemas/DashboardMetricsView"
-          },
-          "statusCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "errors": {
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ComplaintsView": {
-        "type": "object",
-        "properties": {
-          "id": {
+          "userId": {
             "type": "integer",
             "format": "int32"
           },
           "user": {
             "$ref": "#/components/schemas/UserView"
           },
-          "complaintsCategory": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "loanTermInMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loanTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loanType": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentReference": {
             "type": "string",
             "nullable": true
           },
           "status": {
             "type": "string",
             "nullable": true
-          },
-          "departureLocation": {
-            "type": "string",
-            "nullable": true
-          },
-          "finalDestination": {
-            "type": "string",
-            "nullable": true
-          },
-          "departureDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "connectingFlights": {
-            "type": "boolean"
-          },
-          "arrivalTime": {
-            "type": "string",
-            "nullable": true
-          },
-          "notificationPeriod": {
-            "type": "string",
-            "nullable": true
-          },
-          "delayedFlight": {
-            "type": "string",
-            "nullable": true
-          },
-          "airline": {
-            "type": "string",
-            "nullable": true
-          },
-          "flightNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "additionalInformation": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ComplaintsViewStandardResponse": {
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "nullable": true
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "method": {
-            "type": "string",
-            "default": "GET",
-            "nullable": true
-          },
-          "routeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "routeValues": {
-            "nullable": true
-          },
-          "status": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "data": {
-            "$ref": "#/components/schemas/ComplaintsView"
-          },
-          "statusCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "errors": {
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ComplaintsViewPagedCollection": {
+      "LoanViewPagedCollection": {
         "type": "object",
         "properties": {
           "offset": {
@@ -1744,14 +3755,14 @@
           "value": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ComplaintsView"
+              "$ref": "#/components/schemas/LoanView"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ComplaintsViewPagedCollectionStandardResponse": {
+      "LoanViewPagedCollectionStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -1785,7 +3796,7 @@
             "nullable": true
           },
           "data": {
-            "$ref": "#/components/schemas/ComplaintsViewPagedCollection"
+            "$ref": "#/components/schemas/LoanViewPagedCollection"
           },
           "statusCode": {
             "type": "string",
@@ -1797,21 +3808,21 @@
         },
         "additionalProperties": false
       },
-      "MonthlyUserView": {
+      "UserMetrics": {
         "type": "object",
         "properties": {
-          "month": {
-            "type": "string",
-            "nullable": true
+          "allUsers": {
+            "type": "integer",
+            "format": "int32"
           },
-          "count": {
+          "newUsers": {
             "type": "integer",
             "format": "int32"
           }
         },
         "additionalProperties": false
       },
-      "MonthlyUserViewIEnumerableStandardResponse": {
+      "UserMetricsStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -1845,11 +3856,7 @@
             "nullable": true
           },
           "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MonthlyUserView"
-            },
-            "nullable": true
+            "$ref": "#/components/schemas/UserMetrics"
           },
           "statusCode": {
             "type": "string",
@@ -1861,68 +3868,88 @@
         },
         "additionalProperties": false
       },
-      "ComplaintsModel": {
+      "TransactionView": {
         "type": "object",
         "properties": {
-          "complaintsCategoryId": {
+          "userId": {
             "type": "integer",
             "format": "int32"
           },
-          "departureLocation": {
+          "transactionReference": {
             "type": "string",
             "nullable": true
           },
-          "finalDestination": {
+          "paymentLogId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "status": {
             "type": "string",
             "nullable": true
           },
-          "departureDate": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
             "type": "string",
             "format": "date-time"
-          },
-          "connectingFlights": {
-            "type": "boolean"
-          },
-          "connectingFlightAirLine": {
-            "type": "string",
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransactionViewPagedCollection": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
-          "connectingFlightNumber": {
-            "type": "string",
+          "limit": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
-          "boardingPass": {
-            "type": "string",
-            "nullable": true
+          "size": {
+            "type": "integer",
+            "format": "int32"
           },
-          "arrivalTime": {
-            "type": "string",
-            "nullable": true
+          "first": {
+            "$ref": "#/components/schemas/Link"
           },
-          "notificationPeriod": {
-            "type": "string",
-            "nullable": true
+          "previous": {
+            "$ref": "#/components/schemas/Link"
           },
-          "delayedFlight": {
-            "type": "string",
-            "nullable": true
+          "next": {
+            "$ref": "#/components/schemas/Link"
           },
-          "airline": {
-            "type": "string",
-            "nullable": true
+          "last": {
+            "$ref": "#/components/schemas/Link"
           },
-          "flightNumber": {
-            "type": "string",
-            "nullable": true
+          "self": {
+            "$ref": "#/components/schemas/Link"
           },
-          "additionalInformation": {
-            "type": "string",
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionView"
+            },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ComplaintsViewIEnumerableStandardResponse": {
+      "TransactionViewPagedCollectionStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -1956,11 +3983,7 @@
             "nullable": true
           },
           "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ComplaintsView"
-            },
-            "nullable": true
+            "$ref": "#/components/schemas/TransactionViewPagedCollection"
           },
           "statusCode": {
             "type": "string",
@@ -1972,17 +3995,225 @@
         },
         "additionalProperties": false
       },
-      "NameModel": {
+      "TransactionViewStandardResponse": {
         "type": "object",
         "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TransactionView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoanViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoanView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingPlanTypeView": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "allTimeSavings": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentTotalSavings": {
+            "type": "number",
+            "format": "double"
+          },
+          "savingsActiveUsers": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
       },
-      "ComplaintsCategory": {
+      "SavingPlanTypeViewListStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SavingPlanTypeView"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingPlanTypeViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SavingPlanTypeView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingPlanType": {
         "type": "object",
         "properties": {
           "id": {
@@ -2000,11 +4231,15 @@
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ComplaintsCategoryStandardResponse": {
+      "SavingPlanTypeStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -2038,7 +4273,7 @@
             "nullable": true
           },
           "data": {
-            "$ref": "#/components/schemas/ComplaintsCategory"
+            "$ref": "#/components/schemas/SavingPlanType"
           },
           "statusCode": {
             "type": "string",
@@ -2050,7 +4285,300 @@
         },
         "additionalProperties": false
       },
-      "ComplaintsCategoryIEnumerableStandardResponse": {
+      "BaxiProviderResponse": {
+        "type": "object",
+        "properties": {
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortname": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BaxiProvidersResponse": {
+        "type": "object",
+        "properties": {
+          "providers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaxiProviderResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BaxiProvidersResponseStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/BaxiProvidersResponse"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AirtimePurchaseInput": {
+        "type": "object",
+        "properties": {
+          "pin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AirtimePurchaseView": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AirtimePurchaseViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/AirtimePurchaseView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProviderResponse": {
+        "type": "object",
+        "properties": {
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortname": {
+            "type": "string",
+            "nullable": true
+          },
+          "billerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataProviderResponse": {
+        "type": "object",
+        "properties": {
+          "providers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataProviderResponseStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DataProviderResponse"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataBundlePurchaseInput": {
+        "type": "object",
+        "properties": {
+          "pin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProviderBundleResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowance": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "validity": {
+            "type": "string",
+            "nullable": true
+          },
+          "datacode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProviderBundleResponseListStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -2086,7 +4614,867 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ComplaintsCategory"
+              "$ref": "#/components/schemas/ProviderBundleResponse"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RawOutputResponse": {
+        "type": "object",
+        "properties": {
+          "accountStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerType": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoicePeriod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "customerNumber": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrentBouquetRawResponse": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MultichoiceUserResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "outstandingBalance": {
+            "nullable": true
+          },
+          "dueDate": {
+            "nullable": true
+          },
+          "district": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "minimumAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "rawOutput": {
+            "$ref": "#/components/schemas/RawOutputResponse"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentBouquetRaw": {
+            "$ref": "#/components/schemas/CurrentBouquetRawResponse"
+          },
+          "currentBouquet": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MultichoiceAccountResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/MultichoiceUserResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MultichoiceAccountResponseStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/MultichoiceAccountResponse"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionModel": {
+        "type": "object",
+        "properties": {
+          "isBoxOffice": {
+            "type": "boolean"
+          },
+          "totalAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "productMonthsPaidFor": {
+            "type": "string",
+            "nullable": true
+          },
+          "productCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "smartcardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StringStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AvailablePricingOptionResponse": {
+        "type": "object",
+        "properties": {
+          "monthsPaidFor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoicePeriod": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProviderBouquetResponse": {
+        "type": "object",
+        "properties": {
+          "availablePricingOptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailablePricingOptionResponse"
+            },
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProviderBouquetResponseListStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderBouquetResponse"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CableSubscriptionModel": {
+        "type": "object",
+        "properties": {
+          "totalAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "addonMonthsPaidFor": {
+            "type": "string",
+            "nullable": true
+          },
+          "addonCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "productMonthsPaidFor": {
+            "type": "string",
+            "nullable": true
+          },
+          "productCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "smartcardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "agentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "agentReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseElectricityModel": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_number": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoanModel": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "loanTermInMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loanTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentReference": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoanViewIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LoanView"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingPlanTypeIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SavingPlanType"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LiquedeSealInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "cardId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingsView": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "savingPlanType": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "monthlyPayment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maturityDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "targetDate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "debitFrequencyInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preferredRecurringPaymentDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserView"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingsViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SavingsView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LiquiedeGoalInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "savingPlanTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "monthlyPayment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maturityDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "targetDate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "debitFrequencyInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preferredRecurringPaymentDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cardId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paid": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingsWithdrawalModel": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "planId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Int32StandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingsViewIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SavingsView"
             },
             "nullable": true
           },
@@ -2221,6 +5609,924 @@
           },
           "newPassword": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletModel": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "balance": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletTypeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletView": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/WalletView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletPinModel": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pin": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FundWalletModel": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Code": {
+        "required": [
+          "codeString"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "codeString": {
+            "maxLength": 50,
+            "type": "string"
+          },
+          "key": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isExpired": {
+            "type": "boolean"
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Card": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "first6Digits": {
+            "type": "string",
+            "nullable": true
+          },
+          "last4Digits": {
+            "type": "string",
+            "nullable": true
+          },
+          "issuer": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiry": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLog": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "flutterWavePaymentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transactionReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "flutterWaveReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceFingerPrint": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "chargedAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "appFee": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantFee": {
+            "type": "string",
+            "nullable": true
+          },
+          "processorResponse": {
+            "type": "string",
+            "nullable": true
+          },
+          "authModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "ip": {
+            "type": "string",
+            "nullable": true
+          },
+          "narration": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amountSettled": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cardId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "card": {
+            "$ref": "#/components/schemas/Card"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SavingPlans": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "savingPlanTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "savingPlanType": {
+            "$ref": "#/components/schemas/SavingPlanType"
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "monthlyPayment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maturityDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "targetDate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "debitFrequencyInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preferredRecurringPaymentDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "statusId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "cardId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "card": {
+            "$ref": "#/components/schemas/Card"
+          },
+          "paid": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "transactionReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentLogId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "paymentLog": {
+            "$ref": "#/components/schemas/PaymentLog"
+          },
+          "statusId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "flutterwaveId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "savingPlansId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "plan": {
+            "$ref": "#/components/schemas/SavingPlans"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "required": [
+          "firstName",
+          "lastName",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailConfirmed": {
+            "type": "boolean"
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "securityStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "concurrencyStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumberConfirmed": {
+            "type": "boolean"
+          },
+          "twoFactorEnabled": {
+            "type": "boolean"
+          },
+          "lockoutEnd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lockoutEnabled": {
+            "type": "boolean"
+          },
+          "accessFailedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "maxLength": 60,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 60,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 60,
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "codes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Code"
+            },
+            "nullable": true
+          },
+          "middleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            },
+            "nullable": true
+          },
+          "transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            "nullable": true
+          },
+          "wallet": {
+            "$ref": "#/components/schemas/Wallet"
+          },
+          "savings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SavingPlans"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Wallet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "zebrraId": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "balance": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferBalanceWitheld": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "walletTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statusId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentView": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "wallet": {
+            "$ref": "#/components/schemas/Wallet"
+          },
+          "transaction": {
+            "$ref": "#/components/schemas/Transaction"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentViewStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PaymentView"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NGNTransferModel": {
+        "type": "object",
+        "properties": {
+          "accountBank": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "narration": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletTransferModel": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "nullable": true
+          },
+          "narration": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recipientUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DebitWalletModel": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardView": {
+        "type": "object",
+        "properties": {
+          "first6Digits": {
+            "type": "string",
+            "nullable": true
+          },
+          "last4Digits": {
+            "type": "string",
+            "nullable": true
+          },
+          "issuer": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiry": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardViewIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardView"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
             "nullable": true
           }
         },

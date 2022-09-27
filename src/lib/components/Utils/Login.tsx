@@ -11,30 +11,33 @@ import {
 import { PrimaryInput } from "lib/components/Utilities/PrimaryInput";
 import NextLink from "next/link";
 import { useForm } from "react-hook-form";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "lib/Utils/MainContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginModel } from "types/AppTypes";
-import { useOperationMethod } from "react-openapi-client";
 import { useToasts } from "react-toast-notifications";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import {
+  AdminService,
+  LoginModel,
+  OpenAPI,
+  UserViewStandardResponse,
+} from "Services";
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),
 });
 
 function Login() {
-  const [logUserIn, { data, loading, error }] =
-    useOperationMethod("Admintoken");
   const router = useRouter();
   const { setAdmin } = useContext(UserContext);
   const { addToast } = useToasts();
+  const path = Cookies.get("path") as string;
   const {
     handleSubmit,
     register,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<LoginModel>({
     resolver: yupResolver(schema),
     mode: "all",
@@ -42,25 +45,33 @@ function Login() {
 
   const onSubmit = async (data: LoginModel) => {
     try {
-      const result = await logUserIn(undefined, data);
-      console.log(data);
-      const value = result.data;
-      console.log({ value });
-      if (value.status) {
+      const result = (await AdminService.authenticate(
+        data
+      )) as UserViewStandardResponse;
+      if (result.status) {
+        OpenAPI.TOKEN = result?.data?.token as string;
         addToast("Login Successful", {
           appearance: "success",
           autoDismiss: true,
         });
-        setAdmin(value.data);
-        Cookies.set("token", value.data.token);
-        localStorage.setItem("admin", JSON.stringify(value.data));
+        setAdmin(result.data);
+        Cookies.set("admin", JSON.stringify(result.data));
+        result.data && Cookies.set("token", result.data.token as string);
+        if (typeof path === "string" && path.trim().length === 0) {
+          router.push(path);
+          return;
+        }
         router.push("/admin/dashboard");
         return;
       }
-      addToast(value.message, { appearance: "error", autoDismiss: true });
+      addToast(result.message, { appearance: "error", autoDismiss: true });
       return;
     } catch (error) {
       console.log(error);
+      addToast("Check your network connection and try again", {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
   };
   return (
@@ -98,7 +109,7 @@ function Login() {
             <Box display="flex" justifyContent="center" w="full" my="2rem">
               <Image src="/assets/padlock.png" />
             </Box>
-            <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <VStack w="full" spacing=".7rem">
                 <PrimaryInput<LoginModel>
                   register={register}
@@ -107,7 +118,6 @@ function Login() {
                   defaultValue=""
                   type="email"
                   placeholder="Chigozie"
-                  label="Email"
                 />
                 <PrimaryInput<LoginModel>
                   register={register}
@@ -116,12 +126,11 @@ function Login() {
                   defaultValue=""
                   type="password"
                   placeholder="*********"
-                  label="Password"
                 />
                 <Button
                   variant="solid"
                   type="submit"
-                  isLoading={loading}
+                  isLoading={isSubmitting}
                   disabled={!isValid}
                   w="full"
                   p="1.5rem 0"
