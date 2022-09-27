@@ -1,14 +1,4 @@
-import {
-  Box,
-  Circle,
-  Flex,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Text,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, Circle, Flex, HStack, Text } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import { DataAccess } from "lib/Utils/Api";
 import { AdminService, UserService, UserView } from "services";

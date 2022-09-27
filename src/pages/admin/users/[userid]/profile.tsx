@@ -1,101 +1,97 @@
-import {
-  Box,
-  Circle,
-  Flex,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Text,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, Circle, Flex, HStack, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { GetServerSideProps } from "next";
-import { DataAccess } from "lib/Utils/Api";
-import { AdminService, UserService, UserView } from "services";
-import { UserViewPagedCollectionStandardResponse } from "types/api";
-import { BsSearch } from "react-icons/bs";
+import {
+  AdminService,
+  UserService,
+  UserView,
+  UserViewPagedCollectionStandardResponse,
+} from "Services";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Tab from "lib/components/Utilities/Tab";
 import Profile from "lib/components/Utils/UsersTab/Profile";
+import Pagination from "lib/components/Utilities/Pagination";
+import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
+import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
+import SearchComponent from "lib/components/Utilities/SearchComponent";
+import withAuth from "lib/components/Utilities/Auth";
 
-
-export default function UserProfile({
-  data,
-  userId
-}:{
-  data: UserView[],
+function UserLoan({
+  allUsers,
+  userId,
+  singleUser,
+}: {
+  allUsers: any;
   userId: number;
+  singleUser: any;
 }) {
   const [currentTab, setCurrentTab] = useState("profile");
   const router = useRouter();
-  const userProfile = data.filter(singleUser => singleUser.id == userId)
-  console.log(userProfile[0])
+
+  const result = allUsers.value;
+  const userProfile = singleUser.data;
+  console.log({ allUsers, userProfile });
   const navigateTabs = (tabname: string) => {
-    router.push(`/admin/users/${userProfile[0].id}/${tabname}`);
+    router.push({
+      pathname: `/admin/users/${userProfile.id}/${tabname}`,
+      query: { ...router.query },
+    });
   };
 
-  console.log(data)
   return (
     <>
       <HStack spacing="1rem" h="auto" alignItems="flex-start">
-        <Box w="20%" bgColor="white" minH="90vh" h="100%">
-          <InputGroup>
-            <InputLeftElement
-              h="42px"
-              w="42px"
-              children={<BsSearch color="rgba(0, 0, 0, 0.4)" />}
-            />
-            <Input
-              placeholder="Search"
-              height="2.5rem"
-              bgColor="white"
-              border="0"
-              boxShadow="0"
-              fontSize="14px"
-              fontWeight="medium"
-              padding="0 3rem"
-              _focus={{
-                borderColor: "unset",
-                border: "0",
-              }}
-            />
-          </InputGroup>
-          {
-            data.map((user, i) => (
-          <Link key={i} href={`/admin/users/${user.id}/profile`}>
-          <Flex
-            borderTop="1px solid rgba(36,68,115,0.3)"
-            h="40px"
-            role="group"
-            cursor="pointer"
-            alignItems="center"
-            transition="all .2s ease"
-            bgColor={user.id == userId ? "black" : "unset"}
-            _hover={{ bgColor: "black" }}
-          >
-            <Text
-              
-              fontSize="14px"
-              fontWeight="bold"
-              pl="1.2rem"
-              color={user.id == userId ? "white" : "black"}
-              _groupHover={{ color: "white" }}
-            >
-              {user.fullName}
-            </Text>
-          </Flex>
-          </Link>
-            ))
-          }
+        <Box w="20%">
+          <Box bgColor="white" h="90vh" position="relative">
+            <SearchComponent border={false} />
+            {result.map((user: UserView, i: number) => {
+              return (
+                <Box
+                  onClick={() => {
+                    router.push({
+                      pathname: `/admin/users/${user.id}/profile`,
+                      query: { ...router.query },
+                    });
+                  }}
+                >
+                  <Flex
+                    borderTop="1px solid rgba(36,68,115,0.3)"
+                    h="40px"
+                    role="group"
+                    cursor="pointer"
+                    alignItems="center"
+                    transition="all .2s ease"
+                    _hover={{ bgColor: "brand.100" }}
+                    bgColor={user.id == userId ? "brand.100" : "unset"}
+                  >
+                    <Text
+                      color={user.id == userId ? "white" : "black"}
+                      fontSize="14px"
+                      textTransform="capitalize"
+                      fontWeight="600"
+                      pl="1.2rem"
+                      _groupHover={{ color: "white" }}
+                    >
+                      {user.fullName}
+                    </Text>
+                  </Flex>
+                </Box>
+              );
+            })}
+            <Box mt="0rem" pos="absolute" bottom="0">
+              <Pagination data={allUsers} display="none" justify="center" />
+            </Box>
+          </Box>
         </Box>
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">
           <Flex alignItems="center" fontWeight="bold">
-            <Circle bgColor="black" color="white" size="3rem" mr="1rem">
-            {`${userProfile[0].firstName[0]}${userProfile[0].lastName[0]}`}
+            <Circle bgColor="brand.100" color="white" size="3rem" mr="1rem">
+              {`${userProfile.firstName?.charAt(
+                0
+              )}${userProfile.lastName?.charAt(0)}`}
             </Circle>
             <Box>
-              <Text fontSize="1.5rem">{userProfile[0].fullName}</Text>
+              <Text fontSize="1.5rem">{userProfile.fullName}</Text>
             </Box>
           </Flex>
           <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
@@ -117,35 +113,49 @@ export default function UserProfile({
             <Box onClick={() => navigateTabs("payments")}>
               <Tab tabname="payments" currentTab={currentTab} />
             </Box>
-            <Box onClick={() => navigateTabs("SLIPCARD")}>
-              <Tab tabname="SLIPCARD" currentTab={currentTab} />
+            <Box onClick={() => navigateTabs("slipcard")}>
+              <Tab tabname="slipcard" currentTab={currentTab} />
             </Box>
             <Box onClick={() => navigateTabs("security")}>
               <Tab tabname="security" currentTab={currentTab} />
             </Box>
           </Flex>
-          <Profile user={userProfile[0]}/>
+          <Profile user={userProfile} />
         </Box>
       </HStack>
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {userId} = ctx.query
-  console.log(userId)
-  try {
-    const data: UserViewPagedCollectionStandardResponse = await UserService.listUsers();
-    console.log(data);
-    return {
-      props: {
-        userId,
-        data: data.data?.value,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {},
-    };
+export default withAuth(UserLoan);
+
+export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
+  async (ctx: any) => {
+    ctx.query.limit = 15;
+    const pagingOptions = filterPagingSearchOptions(ctx);
+    const userId = ctx.query.userId;
+
+    try {
+      const allUsers = (
+        await UserService.listUsers(pagingOptions.offset, pagingOptions.limit)
+      ).data as UserViewPagedCollectionStandardResponse;
+      const singleUser = (await AdminService.getUserById(
+        userId
+      )) as UserViewPagedCollectionStandardResponse;
+
+      return {
+        props: {
+          allUsers,
+          userId,
+          singleUser,
+        },
+      };
+    } catch (error) {
+      return {
+        props: {
+          allUsers: [],
+        },
+      };
+    }
   }
-};
+);
