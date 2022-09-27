@@ -34,6 +34,7 @@ export type User = {
     middleName?: string | null;
     address?: string | null;
     isAdmin?: boolean;
+    isActive?: boolean;
     cards?: Array<Card> | null;
     transactions?: Array<Transaction> | null;
     wallet?: Wallet;

@@ -156,33 +156,50 @@ function AdminTransaction({
             </Thead>
 
             <Tbody>
-              {transaction?.value?.map((x: TransactionView) => {
-                return (
-                  <Tr>
-                    {/* <TableData name={moment(x.departureDate).format("MMM Do YYYY")} /> */}
-                    <td>
-                      <Checkbox
-                        colorScheme="transparent"
-                        iconColor="black"
-                        pl="1rem"
-                        iconSize=".5rem"
-                        size="lg"
-                        borderColor="black"
-                      ></Checkbox>
-                    </td>
-                    <TableDataName name={x.user?.fullName} />
-                    <TableData name={Naira(x.amount)} />
-                    <TableData name={x.title} />
-                    {/* <TableData name="Google Gsuites" /> */}
-                    <TableData name={x.provider ?? "-"} />
-                    <TableData name={x.channel ?? "-"} />
-                    <TableData
-                      name={moment(x.dateCreated).format("D/MM/YY - LT")}
-                    />
-                    <TableStatus name={x.status?.toLocaleLowerCase()} />
-                  </Tr>
-                );
-              })}
+              {transaction?.value?.length === 0 ? (
+                <Box w="full" h="300px" pos="relative">
+                  <Flex
+                    justify="center"
+                    align="center"
+                    h="300px"
+                    pos="absolute"
+                    left="100%"
+                  >
+                    <Text>
+                      There's currently no data available. Check back later
+                    </Text>
+                  </Flex>
+                </Box>
+              ) : (
+                <>
+                  {transaction?.value?.map((x: TransactionView) => {
+                    return (
+                      <Tr key={x.id}>
+                        <td>
+                          <Checkbox
+                            colorScheme="transparent"
+                            iconColor="black"
+                            pl="1rem"
+                            iconSize=".5rem"
+                            size="lg"
+                            borderColor="black"
+                          ></Checkbox>
+                        </td>
+                        <TableDataName name={x.user?.fullName} />
+                        <TableData name={Naira(x.amount)} />
+                        <TableData name={x.title} />
+                        {/* <TableData name="Google Gsuites" /> */}
+                        <TableData name={x.provider ?? "-"} />
+                        <TableData name={x.channel ?? "-"} />
+                        <TableData
+                          name={moment(x.dateCreated).format("D/MM/YY - LT")}
+                        />
+                        <TableStatus name={x.status?.toLocaleLowerCase()} />
+                      </Tr>
+                    );
+                  })}
+                </>
+              )}
             </Tbody>
           </Table>
         </TableContainer>

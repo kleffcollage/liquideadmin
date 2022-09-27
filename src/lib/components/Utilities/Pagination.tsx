@@ -3,7 +3,13 @@ import { useRouter } from "next/router";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { PagedCollection } from "types/AppTypes";
 
-function Pagination({ data }: { data: PagedCollection }) {
+interface PaginationProps {
+  data: PagedCollection;
+  display?: string | undefined;
+  justify?: string | undefined;
+}
+
+function Pagination({ data, display, justify = "flex-end" }: PaginationProps) {
   const totalPages = Math.ceil(
     (data?.size as number) / (data?.limit as unknown as number)
   );
@@ -24,6 +30,7 @@ function Pagination({ data }: { data: PagedCollection }) {
       const offset = url.searchParams.get("offset");
       router.push({
         query: {
+          ...router.query,
           limit: limit,
           offset: offset,
         },
@@ -36,6 +43,7 @@ function Pagination({ data }: { data: PagedCollection }) {
       const offset = url.searchParams.get("offset");
       router.push({
         query: {
+          ...router.query,
           limit: limit,
           offset: offset,
         },
@@ -43,13 +51,24 @@ function Pagination({ data }: { data: PagedCollection }) {
     }
   };
   return (
-    <Flex align="center" justify="flex-end" p="0 2rem">
-      <Text fontSize="14px" fontFamily="Poppins" color="black" mr="1rem">
+    <Flex
+      align="center"
+      justify={justify}
+      p="1rem 2rem 0"
+      display={data.size === 0 ? "none" : "flex"}
+    >
+      <Text
+        fontSize="14px"
+        fontFamily="Poppins"
+        color="black"
+        mr="1rem"
+        display={display}
+      >
         {`${data.size || 0} items`}
       </Text>
       <Flex align="center">
         <Button
-          w="fit-content"
+          w="2rem"
           borderRadius="2px"
           boxShadow="0px 1px 4px rgba(0, 0, 0, 0.14)"
           bgColor="#E2E8F0;"
@@ -64,7 +83,7 @@ function Pagination({ data }: { data: PagedCollection }) {
           {`${currentPage} of ${totalPages}`}
         </Text>
         <Button
-          w="fit-content"
+          w="2rem"
           borderRadius="2px"
           boxShadow="0px 1px 4px rgba(0, 0, 0, 0.14)"
           bgColor="#E2E8F0;"
