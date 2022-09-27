@@ -17,6 +17,7 @@ import {
 import React from "react";
 import { UserMetricsStandardResponse } from "Services";
 import MiniCards from "../Utilities/MiniCards";
+//Fixed couple things
 
 function Dashboard({ data }: { data: UserMetricsStandardResponse }) {
   const metrics = data?.data;
