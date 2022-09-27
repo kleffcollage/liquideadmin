@@ -1,4 +1,8 @@
 import { Link } from "./api";
+export type LoginModel = {
+	email: string;
+	password: string;
+}
 
 export const UserTypes = {
 	ADMIN_USER: "ADMIN_USER",
