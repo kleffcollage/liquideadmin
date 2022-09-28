@@ -31,7 +31,9 @@ function UserPayment({
 
   const result = allUsers.value;
   const userProfile = singleUser.data;
-  console.log({ allUsers, userProfile });
+  const [checked, setChecked] = useState<boolean>(
+    singleUser?.data.isActive || false
+  );
   const navigateTabs = (tabname: string) => {
     router.push({
       pathname: `/admin/users/${userProfile.id}/${tabname}`,
@@ -53,6 +55,7 @@ function UserPayment({
                       pathname: `/admin/users/${user.id}/profiles`,
                       query: { ...router.query },
                     });
+                    setChecked(!singleUser.data.isActive);
                   }}
                 >
                   <Flex
@@ -119,7 +122,11 @@ function UserPayment({
               <Tab tabname="security" currentTab={currentTab} />
             </Box>
           </Flex>
-          <Profile user={userProfile} />
+          <Profile
+            user={userProfile}
+            checked={checked}
+            setChecked={setChecked}
+          />
         </Box>
       </HStack>
     </>

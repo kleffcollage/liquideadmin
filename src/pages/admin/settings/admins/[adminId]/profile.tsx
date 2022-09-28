@@ -32,6 +32,10 @@ function UserProfile({
   const [topTab, setTopTab] = useState("admins");
   const router = useRouter();
   const [successOpen, setsuccessOpen] = useState(false);
+  console.log(singleUser.data.isActive);
+  const [checked, setChecked] = useState<boolean>(
+    singleUser?.data.isActive || false
+  );
   const openModal = () => {
     setsuccessOpen(true);
   };
@@ -76,6 +80,7 @@ function UserProfile({
                         pathname: `/admin/settings/admins/${user.id}/profile`,
                         query: { ...router.query },
                       });
+                      setChecked(!singleUser?.data.isActive);
                     }}
                   >
                     <Flex
@@ -139,7 +144,11 @@ function UserProfile({
                 <Tab tabname="permissions" currentTab={currentTab} />
               </Box>
             </Flex>
-            <AdminProfile user={userProfile} />
+            <AdminProfile
+              user={userProfile}
+              checked={checked}
+              setChecked={setChecked}
+            />
           </Box>
         </HStack>
       </Box>

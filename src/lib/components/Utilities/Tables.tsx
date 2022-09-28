@@ -26,7 +26,7 @@ export function TableData({ name }: { name: string | undefined | null }) {
   return (
     <Td
       fontSize="14px"
-      fontWeight="600"
+      fontWeight="500"
       color="black"
       pl="1rem"
       textTransform="capitalize"

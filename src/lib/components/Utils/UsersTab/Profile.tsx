@@ -1,13 +1,21 @@
 import { Box, Flex, VStack, Text, Switch } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import { UserService, UserView, UserViewStandardResponse } from "Services";
 
-function Profile({ user }: { user: UserView | undefined }) {
-  const [checked, setChecked] = useState<boolean>(user?.isActive || false);
+interface ProfileType {
+  user: UserView | undefined;
+  checked: any;
+  setChecked: any;
+}
+
+function Profile({ user, setChecked, checked }: ProfileType) {
   const { addToast } = useToasts();
-  const AccountStatus = async (id: any, status: any) => {
-    if (status == false) {
+  const router = useRouter();
+  const activateCheck = async (id: any) => {
+    setChecked(!checked);
+    if (checked == false) {
       try {
         const result = (await UserService.activateUser(
           id
@@ -17,6 +25,7 @@ function Profile({ user }: { user: UserView | undefined }) {
             appearance: "success",
             autoDismiss: true,
           });
+          router.reload();
           return;
         }
         addToast(result.message, {
@@ -32,7 +41,7 @@ function Profile({ user }: { user: UserView | undefined }) {
       }
       return;
     }
-    if (status == true) {
+    if (checked == true) {
       try {
         const result = (await UserService.deactivateUser(
           id
@@ -42,6 +51,7 @@ function Profile({ user }: { user: UserView | undefined }) {
             appearance: "success",
             autoDismiss: true,
           });
+          router.reload();
           return;
         }
         addToast(result.message, {
@@ -130,14 +140,26 @@ function Profile({ user }: { user: UserView | undefined }) {
           >
             Account Active
           </Text>
-          <Switch
-            colorScheme="brand"
-            defaultChecked={user?.isActive === true}
-            onChange={() => {
-              setChecked(!checked);
-              AccountStatus(user?.id, checked);
-            }}
-          />
+          <Flex
+            w="2rem"
+            h="1rem"
+            bgColor={checked ? "brand.500" : "gray.300"}
+            borderRadius="999px"
+            padding="2px"
+            cursor="pointer"
+            boxSizing="content-box"
+            align="center"
+            onClick={() => activateCheck(user?.id)}
+          >
+            <Box
+              bgColor="white"
+              w="1rem"
+              h="1rem"
+              borderRadius="inherit"
+              transition="all 150ms"
+              transform={checked ? "translateX(100%)" : "translateX(0)"}
+            />
+          </Flex>
         </Flex>
       </VStack>
     </Flex>
