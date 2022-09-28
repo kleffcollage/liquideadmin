@@ -72,7 +72,7 @@ function UserPermissions({
                   <Box
                     onClick={() => {
                       router.push({
-                        pathname: `/admin/settings/admins/${user.id}/profiles`,
+                        pathname: `/admin/settings/admins/${user.id}/profile`,
                         query: { ...router.query },
                       });
                     }}
@@ -133,7 +133,7 @@ function UserPermissions({
               </Box>
             </Flex>
             <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
-              <Box onClick={() => navigateTabs("profiles")}>
+              <Box onClick={() => navigateTabs("profile")}>
                 <Tab tabname="profile" currentTab={currentTab} />
               </Box>
               <Box onClick={() => navigateTabs("permissions")}>
