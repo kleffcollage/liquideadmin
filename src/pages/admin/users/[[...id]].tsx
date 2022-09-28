@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
       return {
         redirect: {
           permanent: false,
-          destination: `/admin/users/${firstUser.id}/profile`,
+          destination: `/admin/users/${firstUser.id}/profiles`,
         },
       };
     }

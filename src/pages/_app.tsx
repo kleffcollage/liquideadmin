@@ -13,7 +13,7 @@ import Layout from "lib/layout";
 import { UserProvider } from "lib/Utils/MainContext";
 import Cookies from "js-cookie";
 import { OpenAPI } from "Services";
-import NextNProgress from "nextjs-progressbar";
+// import NextNProgress from "nextjs-progressbar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   OpenAPI.BASE = process.env.NEXT_PUBLIC_API_BASEURL as string;
@@ -52,7 +52,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       {/* <Layout> */}
       <UserProvider>
         <ToastProvider>
-          <NextNProgress color="#FFC82C" />
+          {/* <NextNProgress color="#FFC82C" /> */}
           <Layout>
             <Component {...pageProps} />
           </Layout>

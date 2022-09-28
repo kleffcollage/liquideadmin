@@ -53,7 +53,7 @@ function UserProfile({
                 <Box
                   onClick={() => {
                     router.push({
-                      pathname: `/admin/users/${user.id}/profile`,
+                      pathname: `/admin/users/${user.id}/profiles`,
                       query: { ...router.query },
                     });
                   }}
@@ -82,7 +82,15 @@ function UserProfile({
                 </Box>
               );
             })}
-            <Box mt="0rem" pos="absolute" bottom="0">
+            <Box
+              mt="0rem"
+              pos="absolute"
+              bottom="0"
+              pb="2rem"
+              left="50%"
+              transform="translate(-50%)"
+              width="100%"
+            >
               <Pagination data={allUsers} display="none" justify="center" />
             </Box>
           </Box>
@@ -99,8 +107,8 @@ function UserProfile({
             </Box>
           </Flex>
           <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
-            <Box onClick={() => navigateTabs("profile")}>
-              <Tab tabname="profile" currentTab={currentTab} />
+            <Box onClick={() => navigateTabs("profiles")}>
+              <Tab tabname="profiles" currentTab={currentTab} />
             </Box>
             <Box onClick={() => navigateTabs("transactions")}>
               <Tab tabname="transactions" currentTab={currentTab} />
