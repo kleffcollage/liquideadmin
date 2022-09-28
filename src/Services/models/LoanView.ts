@@ -2,9 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { UserView } from "Services";
-
-
+import type { UserView } from './UserView';
 
 export type LoanView = {
     id?: number;
