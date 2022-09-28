@@ -1,4 +1,14 @@
-import { Box, Circle, Flex, HStack, Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Circle,
+  Flex,
+  HStack,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import { DataAccess } from "lib/Utils/Api";
 import { AdminService, UserService, UserView } from "services";
@@ -8,7 +18,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Tab from "lib/components/Utilities/Tab";
 import Profile from "lib/components/Utils/UsersTab/Profile";
-import { useState } from "react";
 
 
 export default function UserProfile({
