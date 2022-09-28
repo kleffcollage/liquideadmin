@@ -121,12 +121,14 @@ requestBody?: PasswordReset,
     /**
      * @param offset 
      * @param limit 
+     * @param search 
      * @returns UserViewPagedCollectionStandardResponse Success
      * @throws ApiError
      */
     public static listUsers(
 offset?: number | null,
 limit?: number | null,
+search?: string | null,
 ): CancelablePromise<UserViewPagedCollectionStandardResponse> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -134,6 +136,7 @@ limit?: number | null,
             query: {
                 'Offset': offset,
                 'Limit': limit,
+                'search': search,
             },
         });
     }
@@ -195,6 +198,40 @@ requestBody?: PasswordResetModel,
             url: '/api/User/password/update',
             body: requestBody,
             mediaType: 'application/json-patch+json',
+        });
+    }
+
+    /**
+     * @param userId 
+     * @returns UserViewStandardResponse Success
+     * @throws ApiError
+     */
+    public static activateUser(
+userId: number,
+): CancelablePromise<UserViewStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/User/activate/{userId}',
+            path: {
+                'userId': userId,
+            },
+        });
+    }
+
+    /**
+     * @param userId 
+     * @returns UserViewStandardResponse Success
+     * @throws ApiError
+     */
+    public static deactivateUser(
+userId: number,
+): CancelablePromise<UserViewStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/User/deactivate/{userId}',
+            path: {
+                'userId': userId,
+            },
         });
     }
 

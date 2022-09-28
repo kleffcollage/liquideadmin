@@ -5,6 +5,7 @@
 import type { UserView } from './UserView';
 
 export type LoanView = {
+    id?: number;
     userId?: number;
     user?: UserView;
     amount?: string | null;
@@ -15,4 +16,5 @@ export type LoanView = {
     reason?: string | null;
     documentReference?: string | null;
     status?: string | null;
+    dateCreated?: string;
 };

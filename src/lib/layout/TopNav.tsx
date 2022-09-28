@@ -16,6 +16,9 @@ export default function TopNav() {
       w="full"
       px={7}
       justifyContent="space-between"
+      position="sticky"
+      top="0"
+      zIndex="100"
     >
       <Text fontSize="22px" fontWeight="bold" textTransform="capitalize">
         {router.pathname.replace("/admin/", "").split("/")[0]}

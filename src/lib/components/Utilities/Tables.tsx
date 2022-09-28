@@ -1,4 +1,5 @@
-import { Box, Circle, HStack, Switch, Td, Th } from "@chakra-ui/react";
+import { Box, Circle, HStack, Switch, Td, Th, Button } from "@chakra-ui/react";
+import Icons from "./Icons";
 import {
   FaArrowAltCircleRight,
   FaArrowRight,
@@ -10,7 +11,7 @@ export function TableHead({ title }: { title: string }) {
   return (
     <Th
       pl="1rem"
-      fontSize="16px"
+      fontSize="14px"
       fontWeight="700"
       color="black"
       textTransform="capitalize"
@@ -23,7 +24,13 @@ export function TableHead({ title }: { title: string }) {
 
 export function TableData({ name }: { name: string | undefined | null }) {
   return (
-    <Td fontSize="14px" fontWeight="600" color="black" pl="1rem">
+    <Td
+      fontSize="14px"
+      fontWeight="600"
+      color="black"
+      pl="1rem"
+      textTransform="capitalize"
+    >
       {name}
     </Td>
   );
@@ -62,7 +69,7 @@ export function TableStatus({ name }: { name: string | undefined | null }) {
       textTransform="capitalize"
       pl="1rem"
       color={
-        name === "approved" || name === "completed"
+        name === "approved" || name === "successful" || name === "completed"
           ? "rgba(47,223,132,1)"
           : name === "pending"
           ? "rgba(227,188,106,1)"
@@ -104,5 +111,45 @@ export function TableActions() {
         </Circle>
       </HStack>
     </Td>
+  );
+}
+
+export function ApproveBtn({ loading, onClick }: any) {
+  return (
+    <Button
+      cursor="pointer"
+      h="2rem"
+      w="2rem"
+      minW="unset"
+      color="white"
+      fontSize=".8rem"
+      bgColor="rgba(47,223,132,1)"
+      type="submit"
+      borderRadius="50%"
+      isLoading={loading}
+      onClick={onClick}
+    >
+      <Icons iconClass="fa-arrow-right" />
+    </Button>
+  );
+}
+
+export function RejectBtn({ loading, onClick }: any) {
+  return (
+    <Button
+      cursor="pointer"
+      h="2rem"
+      w="2rem"
+      minW="unset"
+      color="white"
+      bgColor="rgba(223,57,47,1)"
+      fontSize=".8rem"
+      type="submit"
+      borderRadius="50%"
+      isLoading={loading}
+      onClick={onClick}
+    >
+      <Icons iconClass="fa-times" />
+    </Button>
   );
 }

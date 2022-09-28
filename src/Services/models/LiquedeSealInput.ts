@@ -8,4 +8,5 @@ export type LiquedeSealInput = {
     durationInDays?: number;
     amount?: number;
     cardId?: number;
+    paymentMethod?: string | null;
 };

@@ -30,7 +30,7 @@ export type SavingPlans = {
     user?: User;
     statusId?: number;
     status?: Status;
-    cardId?: number;
+    cardId?: number | null;
     card?: Card;
     paid?: string | null;
 };

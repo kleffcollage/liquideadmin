@@ -40,22 +40,22 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           baseURL: process.env.NEXT_PUBLIC_API_BASEURL,
         }}
       > */}
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-          <link rel="icon" href="/assets/fav.png" type="image/x-icon" />
-        </Head>
-        <DefaultSeo {...defaultSEOConfig} />
-        {/* <Layout> */}
-        <UserProvider>
-          <ToastProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ToastProvider>
-        </UserProvider>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+        />
+        <link rel="icon" href="/assets/fav.png" type="image/x-icon" />
+      </Head>
+      <DefaultSeo {...defaultSEOConfig} />
+      {/* <Layout> */}
+      <UserProvider>
+        <ToastProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ToastProvider>
+      </UserProvider>
       {/* </OpenAPIProvider> */}
     </ChakraProvider>
   );

@@ -13,4 +13,5 @@ export type UserView = {
     token?: string | null;
     phoneNumber?: string | null;
     metrics?: UserMetricsView;
+    isActive?: boolean;
 };
