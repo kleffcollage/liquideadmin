@@ -18,29 +18,9 @@ import NextNProgress from "nextjs-progressbar";
 const MyApp = ({ Component, pageProps }: AppProps) => {
   OpenAPI.BASE = process.env.NEXT_PUBLIC_API_BASEURL as string;
   OpenAPI.TOKEN = Cookies.get("token") as string;
-  // let headers: HeadersInit;
-
-  // headers = {
-  // 	cor: "no-cors",
-  // };
-  // if (typeof window !== "undefined") {
-  // 	const token = Cookies.get("token");
-  // 	headers = {
-  // 		cor: "no-cors",
-  // 		Authorization: `Bearer ${token}`,
-  // 	};
-  // }
 
   return (
     <ChakraProvider theme={customTheme}>
-      {/* <OpenAPIProvider
-        definition={process.env.NEXT_PUBLIC_API_DEFINITION as string}
-        axiosConfigDefaults={{
-          withCredentials: true,
-          headers,
-          baseURL: process.env.NEXT_PUBLIC_API_BASEURL,
-        }}
-      > */}
       <Head>
         <meta
           name="viewport"
@@ -52,7 +32,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       {/* <Layout> */}
       <UserProvider>
         <ToastProvider>
-          <NextNProgress color="#FFC82C" />
+          <NextNProgress color="#191919" />
           <Layout>
             <Component {...pageProps} />
           </Layout>

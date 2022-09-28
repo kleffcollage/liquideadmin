@@ -16,7 +16,7 @@ import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
 
-function UserLoan({
+function UserPayment({
   allUsers,
   userId,
   singleUser,
@@ -25,7 +25,7 @@ function UserLoan({
   userId: number;
   singleUser: any;
 }) {
-  const [currentTab, setCurrentTab] = useState("profile");
+  const [currentTab, setCurrentTab] = useState("profiles");
   const router = useRouter();
 
   const result = allUsers.value;
@@ -49,7 +49,7 @@ function UserLoan({
                 <Box
                   onClick={() => {
                     router.push({
-                      pathname: `/admin/users/${user.id}/profile`,
+                      pathname: `/admin/users/${user.id}/profiles`,
                       query: { ...router.query },
                     });
                   }}
@@ -95,8 +95,8 @@ function UserLoan({
             </Box>
           </Flex>
           <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
-            <Box onClick={() => navigateTabs("profile")}>
-              <Tab tabname="profile" currentTab={currentTab} />
+            <Box onClick={() => navigateTabs("profiles")}>
+              <Tab tabname="profiles" currentTab={currentTab} />
             </Box>
             <Box onClick={() => navigateTabs("transactions")}>
               <Tab tabname="transactions" currentTab={currentTab} />
@@ -126,8 +126,7 @@ function UserLoan({
     </>
   );
 }
-
-export default withAuth(UserLoan);
+export default withAuth(UserPayment);
 
 export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
   async (ctx: any) => {

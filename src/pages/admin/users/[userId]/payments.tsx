@@ -49,7 +49,7 @@ function UserPayment({
                 <Box
                   onClick={() => {
                     router.push({
-                      pathname: `/admin/users/${user.id}/profile`,
+                      pathname: `/admin/users/${user.id}/profiles`,
                       query: { ...router.query },
                     });
                   }}
@@ -95,8 +95,8 @@ function UserPayment({
             </Box>
           </Flex>
           <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
-            <Box onClick={() => navigateTabs("profile")}>
-              <Tab tabname="profile" currentTab={currentTab} />
+            <Box onClick={() => navigateTabs("profiles")}>
+              <Tab tabname="profiles" currentTab={currentTab} />
             </Box>
             <Box onClick={() => navigateTabs("transactions")}>
               <Tab tabname="transactions" currentTab={currentTab} />
