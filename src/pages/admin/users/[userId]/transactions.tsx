@@ -17,6 +17,7 @@ import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
 import Transactions from "lib/components/Utils/UsersTab/Transactions";
+import UserPagination from "lib/components/Utils/UserPagination";
 
 function UserProfile({
   allUsers,
@@ -82,17 +83,7 @@ function UserProfile({
                 </Box>
               );
             })}
-            <Box
-              mt="0rem"
-              pos="absolute"
-              bottom="0"
-              pb="2rem"
-              left="50%"
-              transform="translate(-50%)"
-              width="100%"
-            >
-              <Pagination data={allUsers} display="none" justify="center" />
-            </Box>
+            <UserPagination allUsers={allUsers} />
           </Box>
         </Box>
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">

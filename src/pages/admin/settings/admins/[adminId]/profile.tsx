@@ -17,6 +17,7 @@ import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
 import AdminProfile from "lib/components/Utils/SettingsTab/AdminProfile";
 import AddNewAdmin from "lib/components/Modals/AddNewAdmin";
+import UserPagination from "lib/components/Utils/UserPagination";
 
 function UserProfile({
   allUsers,
@@ -101,9 +102,7 @@ function UserProfile({
                   </Box>
                 );
               })}
-              <Box mt="0rem" pos="absolute" bottom="0">
-                <Pagination data={allUsers} display="none" justify="center" />
-              </Box>
+              <UserPagination allUsers={allUsers} />
             </Box>
           </Box>
           <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">

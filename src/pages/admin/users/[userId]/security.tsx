@@ -16,6 +16,7 @@ import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
 import Security from "lib/components/Utils/UsersTab/Security";
+import UserPagination from "lib/components/Utils/UserPagination";
 
 function UserSecurity({
   allUsers,
@@ -79,9 +80,7 @@ function UserSecurity({
                 </Box>
               );
             })}
-            <Box mt="0rem" pos="absolute" bottom="0">
-              <Pagination data={allUsers} display="none" justify="center" />
-            </Box>
+            <UserPagination allUsers={allUsers} />
           </Box>
         </Box>
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">

@@ -18,6 +18,7 @@ import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
 import Savings from "lib/components/Utils/UsersTab/Savings";
 import Loans from "lib/components/Utils/UsersTab/Loans";
+import UserPagination from "lib/components/Utils/UserPagination";
 
 function UserLoan({
   allUsers,
@@ -83,9 +84,7 @@ function UserLoan({
                 </Box>
               );
             })}
-            <Box mt="0rem" pos="absolute" bottom="0">
-              <Pagination data={allUsers} display="none" justify="center" />
-            </Box>
+            <UserPagination allUsers={allUsers} />
           </Box>
         </Box>
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">
