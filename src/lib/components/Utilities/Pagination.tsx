@@ -19,8 +19,8 @@ function Pagination({ data, display, justify = "flex-end" }: PaginationProps) {
     (data?.limit as unknown as number)) as number;
 
   const router = useRouter();
-  const next = data.next?.href;
-  const previous = data.previous?.href;
+  const next = data?.next?.href;
+  const previous = data?.previous?.href;
 
   const paginate = (direction: "next" | "previous") => {
     let link = "";
@@ -55,7 +55,7 @@ function Pagination({ data, display, justify = "flex-end" }: PaginationProps) {
       align="center"
       justify={justify}
       p="1rem 2rem 0"
-      display={data.size === 0 ? "none" : "flex"}
+      display={data?.size === 0 ? "none" : "flex"}
     >
       <Text
         fontSize="14px"
@@ -64,7 +64,7 @@ function Pagination({ data, display, justify = "flex-end" }: PaginationProps) {
         mr="1rem"
         display={display}
       >
-        {`${data.size || 0} items`}
+        {`${data?.size || 0} items`}
       </Text>
       <Flex align="center">
         <Button

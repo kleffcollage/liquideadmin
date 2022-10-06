@@ -4,10 +4,5 @@
 @import url("css/calendar.css");
 @import url("css/uploadcare.css");
 @import url("css/progressbar.css");
-
-form {
-  width: 100%;
-}
-tr {
-  cursor: pointer;
-}
+@import url("css/checkbox.css");
+@import url("css/misc.css");

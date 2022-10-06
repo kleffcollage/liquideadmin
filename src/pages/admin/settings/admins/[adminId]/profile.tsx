@@ -80,7 +80,6 @@ function UserProfile({
                         pathname: `/admin/settings/admins/${user.id}/profile`,
                         query: { ...router.query },
                       });
-                      setChecked(!singleUser?.data.isActive);
                     }}
                   >
                     <Flex

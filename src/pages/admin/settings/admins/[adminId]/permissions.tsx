@@ -18,6 +18,7 @@ import withAuth from "lib/components/Utilities/Auth";
 import AdminProfile from "lib/components/Utils/SettingsTab/AdminProfile";
 import Permission from "lib/components/Utils/SettingsTab/Permission";
 import UserPagination from "lib/components/Utils/UserPagination";
+import AddNewAdmin from "lib/components/Modals/AddNewAdmin";
 
 function UserPermissions({
   allUsers,
@@ -143,6 +144,7 @@ function UserPermissions({
           </Box>
         </HStack>
       </Box>
+      <AddNewAdmin isOpen={successOpen} onClose={closeModal} />
     </>
   );
 }

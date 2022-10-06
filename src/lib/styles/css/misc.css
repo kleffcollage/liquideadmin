@@ -1,0 +1,16 @@
+form {
+  width: 100%;
+}
+tr {
+  cursor: pointer;
+}
+.apexcharts-bar-area {
+  fill: black;
+}
+select > option {
+  background: inherit !important;
+}
+.hide a{
+    pointer-events: none;
+    cursor: not-allowed;
+}

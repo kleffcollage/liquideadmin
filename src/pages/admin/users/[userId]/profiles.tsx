@@ -55,7 +55,6 @@ function UserPayment({
                       pathname: `/admin/users/${user.id}/profiles`,
                       query: { ...router.query },
                     });
-                    setChecked(!singleUser.data.isActive);
                   }}
                 >
                   <Flex

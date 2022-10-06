@@ -1,6 +1,7 @@
 import { Box, Flex, VStack, Text, Switch } from "@chakra-ui/react";
+import Switcher from "lib/components/Utilities/Switcher";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import { UserService, UserView, UserViewStandardResponse } from "Services";
 
@@ -13,61 +14,12 @@ interface ProfileType {
 function Profile({ user, setChecked, checked }: ProfileType) {
   const { addToast } = useToasts();
   const router = useRouter();
-  const activateCheck = async (id: any) => {
-    setChecked(!checked);
-    if (checked == false) {
-      try {
-        const result = (await UserService.activateUser(
-          id
-        )) as UserViewStandardResponse;
-        if (result.status) {
-          addToast(result.message, {
-            appearance: "success",
-            autoDismiss: true,
-          });
-          router.reload();
-          return;
-        }
-        addToast(result.message, {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      } catch (err) {
-        console.log(err);
-        addToast("Check your network connection and try again", {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      }
-      return;
+
+  useEffect(() => {
+    if (checked !== user?.isActive) {
+      setChecked(user?.isActive);
     }
-    if (checked == true) {
-      try {
-        const result = (await UserService.deactivateUser(
-          id
-        )) as UserViewStandardResponse;
-        if (result.status) {
-          addToast(result.message, {
-            appearance: "success",
-            autoDismiss: true,
-          });
-          router.reload();
-          return;
-        }
-        addToast(result.message, {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      } catch (err) {
-        console.log(err);
-        addToast("Check your network connection and try again", {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      }
-      return;
-    }
-  };
+  }, [user?.isActive]);
   return (
     <Flex justify="space-between" mt="2rem" pr="5rem">
       <VStack spacing="1rem" alignItems="flex-start">
@@ -138,28 +90,14 @@ function Profile({ user, setChecked, checked }: ProfileType) {
             color="rgba(15,15,15,.5)"
             mr="0.5rem"
           >
-            Account Active
+            {user?.isActive == true ? "Account Active" : "Account Inactive"}
           </Text>
-          <Flex
-            w="2rem"
-            h="1rem"
-            bgColor={checked ? "brand.500" : "gray.300"}
-            borderRadius="999px"
-            padding="2px"
-            cursor="pointer"
-            boxSizing="content-box"
-            align="center"
-            onClick={() => activateCheck(user?.id)}
-          >
-            <Box
-              bgColor="white"
-              w="1rem"
-              h="1rem"
-              borderRadius="inherit"
-              transition="all 150ms"
-              transform={checked ? "translateX(100%)" : "translateX(0)"}
-            />
-          </Flex>
+          <Switcher
+            checked={checked}
+            user={user}
+            onClick={true}
+            setChecked={setChecked}
+          />
         </Flex>
       </VStack>
     </Flex>

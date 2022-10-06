@@ -1,4 +1,5 @@
 import { Box, Flex, Image, VStack, Text, Circle, Icon } from "@chakra-ui/react";
+import Logout from "lib/components/Utilities/Logout";
 import AdminMenu from "lib/components/Utils/AdminMenu";
 import { useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
@@ -69,6 +70,7 @@ function SideNav() {
         <AdminMenu text="Payments" url="/admin/payments" icon="fa-money-bill" />
         <AdminMenu text="Services" url="/admin/services" icon="fa-window" />
         <AdminMenu text="Settings" url="/admin/settings" icon="fa-cog" />
+        <Logout />
       </VStack>
     </Box>
   );

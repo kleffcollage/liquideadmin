@@ -1,4 +1,5 @@
 import { Text, Circle, Flex, Image, Icon } from "@chakra-ui/react";
+import Icons from "lib/components/Utilities/Icons";
 import { UserContext } from "lib/Utils/MainContext";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
@@ -27,10 +28,16 @@ export default function TopNav() {
         <Text fontWeight="600" fontSize="1rem" pr=".8rem">
           {`Hi, ${admin ? admin.firstName : "Pade"}`}
         </Text>
-        <Circle size="50px" overflow="hidden" bg="gray">
-          <Image src="" w="full" h="full" objectFit="cover" />
+        <Circle
+          size="45px"
+          overflow="hidden"
+          bg="trnasparent"
+          border="3px solid black"
+        >
+          {/* <Image src="" w="full" h="full" objectFit="cover" /> */}
+          <Icons iconClass="fa-user-tie" style={{ fontSize: "1.5rem" }} />
         </Circle>
-        <Icon as={IoIosArrowDown} ml=".8rem" />
+        {/* <Icon as={IoIosArrowDown} ml=".8rem" /> */}
       </Flex>
     </Flex>
   );
