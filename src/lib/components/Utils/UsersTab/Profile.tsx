@@ -95,7 +95,6 @@ function Profile({ user, setChecked, checked }: ProfileType) {
           <Switcher
             checked={checked}
             user={user}
-            onClick={true}
             setChecked={setChecked}
           />
         </Flex>

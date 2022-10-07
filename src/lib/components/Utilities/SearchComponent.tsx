@@ -71,7 +71,7 @@ function SearchComponent({ border = true }: SearchProps) {
         }}
       />
       {searchTerm !== "" && (
-        <InputRightElement onClick={clearSearch}>
+        <InputRightElement h="42px" w="42px" onClick={clearSearch}>
           <Icons iconClass="fa-times" />
         </InputRightElement>
       )}

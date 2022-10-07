@@ -56,7 +56,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
 
     try {
       const allServices = (
-        await UserService.listUsers(pagingOptions.offset, pagingOptions.limit)
+        await UserService.listUsers(pagingOptions.offset, pagingOptions.limit, pagingOptions.search)
       ).data as UserViewPagedCollectionStandardResponse;
       const singleService = (await AdminService.getUserById(
         serviceId

@@ -81,6 +81,7 @@ function UserProfile({
                         query: { ...router.query },
                       });
                     }}
+                    key={user.id}
                   >
                     <Flex
                       borderTop="1px solid rgba(36,68,115,0.3)"
@@ -165,7 +166,11 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
 
     try {
       const allUsers = (
-        await AdminService.listAdmins(pagingOptions.offset, pagingOptions.limit)
+        await AdminService.listAdmins(
+          pagingOptions.offset,
+          pagingOptions.limit,
+          pagingOptions.search
+        )
       ).data as UserViewPagedCollectionStandardResponse;
       const singleUser = (await AdminService.getUserById(
         userId

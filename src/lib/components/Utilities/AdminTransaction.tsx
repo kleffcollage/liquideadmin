@@ -32,6 +32,7 @@ import {
 } from "Services";
 import { PagedCollection } from "types/AppTypes";
 import { TableCheckbox } from "./TableCheckbox";
+import TableNoContentWrapper from "./TableNoContentWrapper";
 const moment = require("moment");
 
 function AdminTransaction({
@@ -252,19 +253,13 @@ function AdminTransaction({
 
             <Tbody>
               {transaction?.value?.length === 0 ? (
-                <Box w="full" h="300px" pos="relative">
-                  <Flex
-                    justify="center"
-                    align="center"
-                    h="300px"
-                    pos="absolute"
-                    left="100%"
-                  >
+                <TableNoContentWrapper
+                  elements={
                     <Text>
                       There's currently no data available. Check back later
                     </Text>
-                  </Flex>
-                </Box>
+                  }
+                />
               ) : (
                 <>
                   {transaction?.value?.map((x: TransactionView) => {

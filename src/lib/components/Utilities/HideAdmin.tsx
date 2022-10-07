@@ -1,26 +1,31 @@
-import { Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Circle, Flex, Image, Text } from "@chakra-ui/react";
 
 function HideAdmin() {
-	return (
-		<Flex
-			w="full"
-			bgColor="black"
-			h="100vh"
-			justify="center"
-			align="center"
-			px={16}
-			flexDirection="column"
-		>
-			<Text fontSize="2rem" fontWeight="medium" color="white">
-				Sorry we do not support admin view on this screen resolution.
-			</Text>
-			<Text fontSize="2rem" fontWeight="medium" color="white">
-				kindly upgrade your device to a larger screen or toggle full screen if
-				you're viewing with a minimized tab on browser
-			</Text>
-		</Flex>
-	);
+  return (
+    <Flex
+      w="full"
+      bgColor="brand.100"
+      h="100vh"
+      overflow="hidden"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Circle size="6rem" bgColor="white" p=".3rem" border="5px solid white">
+        <Image w="full" h="full" objectFit="cover" src="/assets/fav.png" />
+      </Circle>
+      <Box textAlign="center" mt="1rem" color="white">
+        <Text fontSize="1.2rem" fontWeight="600" mb="1rem">
+          Oh, hi there!
+        </Text>
+        <Text fontSize="1rem" fontWeight="400" w="80%" mx="auto">
+          We currently do not support admin view on this screen resolution.
+          Please manage your admin dashboard on a different device, or if you're
+          using a desktop, try maximixing to full screen or use a bigger screen
+        </Text>
+      </Box>
+    </Flex>
+  );
 }
 
 export default HideAdmin;

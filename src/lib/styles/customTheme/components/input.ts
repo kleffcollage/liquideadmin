@@ -26,8 +26,9 @@ const Input: DeepPartial<Theme["components"]["Input"]> = {
         background: "rgba(25,25,25,0.03)",
         boxSizing: "border-box",
         h: "2.5rem",
-        border: "none",
         color: "brand.100",
+        borderColor: "brand.100",
+        border: "2px solid",
         _focus: {
           borderColor: "brand.200",
           border: "1px solid",

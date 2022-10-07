@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
         },
       };
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
       return {
         props: {
           data: [],

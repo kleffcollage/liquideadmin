@@ -24,6 +24,7 @@ import { useToasts } from "react-toast-notifications";
 import UserPagination from "./UserPagination";
 import LineChart from "../Charts/LineChart";
 import { useEffect } from "react";
+import SwitcherWithBtn from "../Utilities/SwitcherWithBtn";
 
 function Services({
   result,
@@ -56,6 +57,7 @@ function Services({
                     query: { ...router.query },
                   });
                 }}
+                key={service.id}
               >
                 <Flex
                   borderTop="1px solid rgba(36,68,115,0.3)"
@@ -68,7 +70,6 @@ function Services({
                   px="1rem"
                   _hover={{ bgColor: "black" }}
                   bgColor={service.id == serviceId ? "brand.100" : "unset"}
-                  key={service.id}
                 >
                   <Text
                     color={service.id == serviceId ? "white" : "black"}
@@ -238,9 +239,8 @@ function Services({
                 />
               </GridItem>
               <GridItem colSpan={2}>
-                <Switcher
+                <SwitcherWithBtn
                   checked={checked}
-                  onClick={false}
                   user={serviceProfile}
                   setChecked={setChecked}
                 />

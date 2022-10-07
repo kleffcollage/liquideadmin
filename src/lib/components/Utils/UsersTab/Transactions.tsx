@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   Icon,
+  Spinner,
   Table,
   TableContainer,
   Tbody,
@@ -13,20 +14,28 @@ import {
 } from "@chakra-ui/react";
 import Filter from "lib/components/Utilities/Filter";
 import Pagination from "lib/components/Utilities/Pagination";
+import TableNoContentWrapper from "lib/components/Utilities/TableNoContentWrapper";
 import { TableData, TableHead } from "lib/components/Utilities/Tables";
+import TxnPaginate from "lib/components/Utilities/TxnPaginate";
 import Naira from "lib/Utils/Naira";
+import { useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import { TransactionView, TransactionViewPagedCollection } from "Services";
 import { PagedCollection } from "types/AppTypes";
 const moment = require("moment");
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 interface transactionProps {
   transaction: TransactionViewPagedCollection | undefined | null;
+  id: number;
 }
-function Transactions({ transaction }: transactionProps) {
+function Transactions({ transaction, id }: transactionProps) {
+  const [allTxn, setAllTxn] = useState(transaction);
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <>
-      <Filter />
+      {/* <Filter /> */}
       <Box
         w="full"
         minH="500px"
@@ -48,42 +57,53 @@ function Transactions({ transaction }: transactionProps) {
               </Tr>
             </Thead>
             <Tbody>
-              {transaction?.value?.length === 0 ? (
-                <Box w="full" h="300px" pos="relative">
-                  <Flex
-                    justify="center"
-                    align="center"
-                    h="300px"
-                    pos="absolute"
-                    left="100%"
-                  >
+              {allTxn?.value?.length === 0 ? (
+                <TableNoContentWrapper
+                  elements={
                     <Text>
                       There's currently no data available. Check back later
                     </Text>
-                  </Flex>
-                </Box>
+                  }
+                />
               ) : (
                 <>
-                  {transaction?.value?.map((x: TransactionView) => {
-                    return (
-                      <Tr key={x.id}>
-                        <TableData
-                          name={moment(x.dateCreated).format("D/MM/YY - LT")}
-                        />
-                        <TableData name={x.channel} />
-                        <TableData name={x.title} />
-                        <TableData name={Naira(x.amount)} />
-                        <TableData name={x.provider} />
-                        <TableData name={x.status?.toLocaleLowerCase()} />
-                      </Tr>
-                    );
-                  })}
+                  {loading ? (
+                    <Skeleton
+                      count={8}
+                      className="skeleton"
+                      containerClassName="sk-wrapper"
+                    />
+                  ) : (
+                    <>
+                      {allTxn?.value?.map((x: TransactionView) => {
+                        return (
+                          <Tr key={x.id}>
+                            <TableData
+                              name={moment(x.dateCreated).format(
+                                "D/MM/YY - LT"
+                              )}
+                            />
+                            <TableData name={x.channel} />
+                            <TableData name={x.title} />
+                            <TableData name={Naira(x.amount)} />
+                            <TableData name={x.provider} />
+                            <TableData name={x.status?.toLocaleLowerCase()} />
+                          </Tr>
+                        );
+                      })}
+                    </>
+                  )}
                 </>
               )}
             </Tbody>
           </Table>
         </TableContainer>
-        <Pagination data={transaction as PagedCollection} />
+        <TxnPaginate
+          data={allTxn as PagedCollection}
+          setTxn={setAllTxn}
+          id={id}
+          setLoading={setLoading}
+        />
       </Box>
     </>
   );

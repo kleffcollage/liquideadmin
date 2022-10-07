@@ -18,6 +18,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import Pagination from "lib/components/Utilities/Pagination";
+import TableNoContentWrapper from "lib/components/Utilities/TableNoContentWrapper";
 import {
   ApproveBtn,
   RejectBtn,
@@ -257,19 +258,13 @@ export default function Sourcing({
             </Thead>
             <Tbody>
               {loanRequests?.value?.length === 0 ? (
-                <Box w="full" h="300px" pos="relative">
-                  <Flex
-                    justify="center"
-                    align="center"
-                    h="300px"
-                    pos="absolute"
-                    left="300%"
-                  >
+                <TableNoContentWrapper
+                  elements={
                     <Text>
                       There's currently no data available. Check back later
                     </Text>
-                  </Flex>
-                </Box>
+                  }
+                />
               ) : (
                 <>
                   {loanRequests?.value?.map((x: LoanView) => {

@@ -43,7 +43,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
   name,
   required = false,
   type = "text",
-  label = "",
+  label = "" || name,
   register,
   validate = {},
   error,
@@ -64,9 +64,9 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
   return (
     <>
       <FormControl isInvalid={!!error}>
-        {/* <FormLabel color="brand.100" fontSize="1rem">
-					{label}
-				</FormLabel> */}
+        <FormLabel color="brand.100" fontSize="1rem" display="none">
+          {label}
+        </FormLabel>
         <InputGroup>
           <InputLeftElement
             pointerEvents="none"

@@ -1,22 +1,18 @@
-import { Box, Circle, Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import {
   AdminService,
+  TransactionViewPagedCollectionStandardResponse,
   UserService,
-  UserView,
   UserViewPagedCollectionStandardResponse,
 } from "Services";
-import { useRouter } from "next/router";
-import Tab from "lib/components/Utilities/Tab";
-import Profile from "lib/components/Utils/UsersTab/Profile";
-import Pagination from "lib/components/Utilities/Pagination";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
-import SearchComponent from "lib/components/Utilities/SearchComponent";
 import withAuth from "lib/components/Utilities/Auth";
+import UserSideBar from "lib/components/Utilities/UserSideBar";
+import UserContent from "lib/components/Utilities/UserContent";
 import SlipCard from "lib/components/Utils/UsersTab/SlipCard";
-import UserPagination from "lib/components/Utils/UserPagination";
 
 function UserSlipCard({
   allUsers,
@@ -28,99 +24,15 @@ function UserSlipCard({
   singleUser: any;
 }) {
   const [currentTab, setCurrentTab] = useState("slipcard");
-  const router = useRouter();
-
-  const result = allUsers.value;
-  const userProfile = singleUser.data;
-  console.log({ allUsers, userProfile });
-  const navigateTabs = (tabname: string) => {
-    router.push({
-      pathname: `/admin/users/${userProfile.id}/${tabname}`,
-      query: { ...router.query },
-    });
-  };
+  const result = allUsers?.value;
+  const userProfile = singleUser?.data;
 
   return (
     <>
       <HStack spacing="1rem" h="auto" alignItems="flex-start">
-        <Box w="20%">
-          <Box bgColor="white" h="90vh" position="relative">
-            <SearchComponent border={false} />
-            {result.map((user: UserView, i: number) => {
-              return (
-                <Box
-                  onClick={() => {
-                    router.push({
-                      pathname: `/admin/users/${user.id}/profiles`,
-                      query: { ...router.query },
-                    });
-                  }}
-                >
-                  <Flex
-                    borderTop="1px solid rgba(36,68,115,0.3)"
-                    h="40px"
-                    role="group"
-                    cursor="pointer"
-                    alignItems="center"
-                    transition="all .2s ease"
-                    _hover={{ bgColor: "brand.100" }}
-                    bgColor={user.id == userId ? "brand.100" : "unset"}
-                  >
-                    <Text
-                      color={user.id == userId ? "white" : "black"}
-                      fontSize="14px"
-                      textTransform="capitalize"
-                      fontWeight="600"
-                      pl="1.2rem"
-                      _groupHover={{ color: "white" }}
-                    >
-                      {user.fullName}
-                    </Text>
-                  </Flex>
-                </Box>
-              );
-            })}
-            <UserPagination allUsers={allUsers} />
-          </Box>
-        </Box>
+        <UserSideBar allUsers={allUsers} userId={userId} result={result} />
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">
-          <Flex alignItems="center" fontWeight="bold">
-            <Circle bgColor="brand.100" color="white" size="3rem" mr="1rem">
-              {`${userProfile.firstName?.charAt(
-                0
-              )}${userProfile.lastName?.charAt(0)}`}
-            </Circle>
-            <Box>
-              <Text fontSize="1.5rem">{userProfile.fullName}</Text>
-            </Box>
-          </Flex>
-          <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
-            <Box onClick={() => navigateTabs("profiles")}>
-              <Tab tabname="profiles" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("transactions")}>
-              <Tab tabname="transactions" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("savings")}>
-              <Tab tabname="savings" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("loans")}>
-              <Tab tabname="loans" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("investments")}>
-              <Tab tabname="investments" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("payments")}>
-              <Tab tabname="payments" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("slipcard")}>
-              <Tab tabname="slipcard" currentTab={currentTab} />
-            </Box>
-            <Box onClick={() => navigateTabs("security")}>
-              <Tab tabname="security" currentTab={currentTab} />
-            </Box>
-          </Flex>
-          {/* <h1>No page Added</h1> */}
+          <UserContent userProfile={userProfile} currentTab={currentTab} />
           <SlipCard />
         </Box>
       </HStack>
@@ -137,7 +49,11 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
 
     try {
       const allUsers = (
-        await UserService.listUsers(pagingOptions.offset, pagingOptions.limit)
+        await UserService.listUsers(
+          pagingOptions.offset,
+          pagingOptions.limit,
+          pagingOptions.search
+        )
       ).data as UserViewPagedCollectionStandardResponse;
       const singleUser = (await AdminService.getUserById(
         userId

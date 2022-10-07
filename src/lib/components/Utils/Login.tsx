@@ -37,7 +37,7 @@ function Login() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<LoginModel>({
     resolver: yupResolver(schema),
     mode: "all",
@@ -131,7 +131,6 @@ function Login() {
                   variant="solid"
                   type="submit"
                   isLoading={isSubmitting}
-                  disabled={!isValid}
                   w="full"
                   p="1.5rem 0"
                   // mt={["2rem", "0"]}

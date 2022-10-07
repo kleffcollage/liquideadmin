@@ -4,13 +4,33 @@ form {
 tr {
   cursor: pointer;
 }
-.apexcharts-bar-area {
-  fill: black;
+tbody {
+  position: relative;
 }
 select > option {
   background: inherit !important;
 }
-.hide a{
-    pointer-events: none;
-    cursor: not-allowed;
+.hide a {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: #dce1e7;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 15px;
+}
+.sk-wrapper {
+  position: absolute;
+  width: 100%;
+}
+.skeleton {
+  height: 50px;
+  border-radius: 0 !important;
+  --base-color: #e1e1e160 !important;
 }
