@@ -1,5 +1,6 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
+import LoanSetup from "lib/components/Modals/LoanSetup";
 import withAuth from "lib/components/Utilities/Auth";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import SecondaryTab from "lib/components/Utilities/SecondaryTab";
@@ -9,6 +10,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   AdminService,
+  LoanTypeListStandardResponse,
   LoanViewPagedCollectionStandardResponse,
 } from "Services";
 
@@ -17,10 +19,18 @@ interface loanType {
   review: LoanViewPagedCollectionStandardResponse;
   sourcing: LoanViewPagedCollectionStandardResponse;
   approval: LoanViewPagedCollectionStandardResponse;
+  listLoanTypes: LoanTypeListStandardResponse;
 }
 
-function LoanReview({ request, review, sourcing, approval }: loanType) {
+function LoanReview({
+  request,
+  review,
+  sourcing,
+  approval,
+  listLoanTypes,
+}: loanType) {
   const [currentTab, setCurrentTab] = useState("review");
+  const { onOpen, isOpen, onClose } = useDisclosure();
   const router = useRouter();
   const navigateTabs = (tabname: string) => {
     router.push(`/admin/loans/${tabname}`);
@@ -40,6 +50,7 @@ function LoanReview({ request, review, sourcing, approval }: loanType) {
           justify="center"
           fontSize="14.5px"
           fontWeight="bold"
+          onClick={onOpen}
         >
           Loans Setup
         </Flex>
@@ -79,6 +90,7 @@ function LoanReview({ request, review, sourcing, approval }: loanType) {
         </Box>
       </Flex>
       <Review data={review} />
+      <LoanSetup isOpen={isOpen} onClose={onClose} loanTypes={listLoanTypes} />
     </Box>
   );
 }
@@ -98,12 +110,14 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
         (await AdminService.listReviewedLoan()) as LoanViewPagedCollectionStandardResponse;
       const approval =
         (await AdminService.listApprovedLoan()) as LoanViewPagedCollectionStandardResponse;
+      const listLoanTypes = await AdminService.listLoanTypes();
       return {
         props: {
           request,
           review,
           sourcing,
           approval,
+          listLoanTypes,
         },
       };
     } catch (error: any) {

@@ -1,5 +1,6 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
+import LoanSetup from "lib/components/Modals/LoanSetup";
 import withAuth from "lib/components/Utilities/Auth";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import SecondaryTab from "lib/components/Utilities/SecondaryTab";
@@ -10,6 +11,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   AdminService,
+  LoanTypeListStandardResponse,
   LoanViewPagedCollectionStandardResponse,
 } from "Services";
 
@@ -18,10 +20,18 @@ interface loanType {
   review: LoanViewPagedCollectionStandardResponse;
   sourcing: LoanViewPagedCollectionStandardResponse;
   approval: LoanViewPagedCollectionStandardResponse;
+  listLoanTypes: LoanTypeListStandardResponse;
 }
 
-function LoanApproval({ request, review, sourcing, approval }: loanType) {
+function LoanApproval({
+  request,
+  review,
+  sourcing,
+  approval,
+  listLoanTypes,
+}: loanType) {
   const [currentTab, setCurrentTab] = useState("approval");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const navigateTabs = (tabname: string) => {
     router.push(`/admin/loans/${tabname}`);
@@ -29,7 +39,7 @@ function LoanApproval({ request, review, sourcing, approval }: loanType) {
 
   return (
     <Box w="100%" p="0rem" minH="90vh">
-      {/* <Flex justify="flex-end">
+      <Flex justify="flex-end">
         <Flex
           as="button"
           w="132px"
@@ -41,10 +51,11 @@ function LoanApproval({ request, review, sourcing, approval }: loanType) {
           justify="center"
           fontSize="14.5px"
           fontWeight="bold"
+          onClick={onOpen}
         >
           Loans Setup
         </Flex>
-      </Flex> */}
+      </Flex>
       <Flex borderBottom="1px solid rgba(36,68,115,0.1)" mt="2rem">
         <Box onClick={() => navigateTabs("requests")}>
           <SecondaryTab
@@ -80,6 +91,7 @@ function LoanApproval({ request, review, sourcing, approval }: loanType) {
         </Box>
       </Flex>
       <Approval data={approval} />
+      <LoanSetup isOpen={isOpen} onClose={onClose} loanTypes={listLoanTypes} />
     </Box>
   );
 }
@@ -99,12 +111,14 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
         pagingOptions.offset,
         pagingOptions.limit
       )) as LoanViewPagedCollectionStandardResponse;
+      const listLoanTypes = await AdminService.listLoanTypes();
       return {
         props: {
           request,
           review,
           sourcing,
           approval,
+          listLoanTypes,
         },
       };
     } catch (error: any) {
