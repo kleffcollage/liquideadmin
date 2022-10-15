@@ -44,7 +44,7 @@ function UserLoan({
         <UserSideBar allUsers={allUsers} userId={userId} result={result} />
         <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">
           <UserContent userProfile={userProfile} currentTab={currentTab} />
-          <Loans getUserLoan={getUserLoan} />
+          <Loans getUserLoan={getUserLoan?.data} id={userId} />
         </Box>
       </HStack>
     </>
@@ -70,7 +70,11 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
       const singleUser = (await AdminService.getUserById(
         userId
       )) as UserViewPagedCollectionStandardResponse;
-      const getUserLoan = await AdminService.getUserLoan(userId);
+      const getUserLoan = await AdminService.getUserLoan(
+        userId,
+        pagingOptions.offset,
+        5
+      );
 
       return {
         props: {

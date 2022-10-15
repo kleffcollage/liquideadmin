@@ -1,5 +1,6 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
+import LoanSetup from "lib/components/Modals/LoanSetup";
 import withAuth from "lib/components/Utilities/Auth";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import SecondaryTab from "lib/components/Utilities/SecondaryTab";
@@ -9,6 +10,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   AdminService,
+  LoanTypeListStandardResponse,
   LoanViewPagedCollectionStandardResponse,
 } from "Services";
 
@@ -17,10 +19,18 @@ interface loanType {
   review: LoanViewPagedCollectionStandardResponse;
   sourcing: LoanViewPagedCollectionStandardResponse;
   approval: LoanViewPagedCollectionStandardResponse;
+  listLoanTypes: LoanTypeListStandardResponse;
 }
 
-function LoanRequest({ request, review, sourcing, approval }: loanType) {
+function LoanRequest({
+  request,
+  review,
+  sourcing,
+  approval,
+  listLoanTypes,
+}: loanType) {
   const [currentTab, setCurrentTab] = useState("requests");
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const router = useRouter();
   const navigateTabs = (tabname: string) => {
     router.push(`/admin/loans/${tabname}`);
@@ -40,6 +50,7 @@ function LoanRequest({ request, review, sourcing, approval }: loanType) {
           justify="center"
           fontSize="14.5px"
           fontWeight="bold"
+          onClick={onOpen}
         >
           Loans Setup
         </Flex>
@@ -48,7 +59,7 @@ function LoanRequest({ request, review, sourcing, approval }: loanType) {
         <Box onClick={() => navigateTabs("requests")}>
           <SecondaryTab
             tabname="requests"
-            num={request.data?.size}
+            num={request?.data?.size}
             icon="fa-arrow-down"
             currentTab={currentTab}
           />
@@ -56,7 +67,7 @@ function LoanRequest({ request, review, sourcing, approval }: loanType) {
         <Box onClick={() => navigateTabs("review")}>
           <SecondaryTab
             tabname="review"
-            num={review.data?.size}
+            num={review?.data?.size}
             icon="fa-fingerprint"
             currentTab={currentTab}
           />
@@ -64,7 +75,7 @@ function LoanRequest({ request, review, sourcing, approval }: loanType) {
         <Box onClick={() => navigateTabs("sourcing")}>
           <SecondaryTab
             tabname="sourcing"
-            num={sourcing.data?.size}
+            num={sourcing?.data?.size}
             icon="fa-file-search"
             currentTab={currentTab}
           />
@@ -72,13 +83,14 @@ function LoanRequest({ request, review, sourcing, approval }: loanType) {
         <Box onClick={() => navigateTabs("approval")}>
           <SecondaryTab
             tabname="approval"
-            num={approval.data?.size}
+            num={approval?.data?.size}
             icon="fa-user-check"
             currentTab={currentTab}
           />
         </Box>
       </Flex>
       <Requests data={request} />
+      <LoanSetup isOpen={isOpen} onClose={onClose} loanTypes={listLoanTypes} />
     </Box>
   );
 }
@@ -98,12 +110,14 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
         (await AdminService.listReviewedLoan()) as LoanViewPagedCollectionStandardResponse;
       const approval =
         (await AdminService.listApprovedLoan()) as LoanViewPagedCollectionStandardResponse;
+      const listLoanTypes = await AdminService.listLoanTypes();
       return {
         props: {
           request,
           review,
           sourcing,
           approval,
+          listLoanTypes,
         },
       };
     } catch (error: any) {

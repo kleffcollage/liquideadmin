@@ -94,15 +94,6 @@ function SwitcherWithBtn({ checked, user, setChecked }: any) {
           />
         </Flex>
       </Flex>
-
-      <Button
-        w="full"
-        height="3rem"
-        isLoading={loading}
-        onClick={() => activateCheck(user.id)}
-      >
-        Update
-      </Button>
     </>
   );
 }

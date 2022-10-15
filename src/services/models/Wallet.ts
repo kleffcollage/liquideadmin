@@ -19,4 +19,6 @@ export type Wallet = {
     statusId?: number;
     pin?: number;
     status?: Status;
+    transactionLimit?: number;
+    dailyTransactionLimit?: number;
 };

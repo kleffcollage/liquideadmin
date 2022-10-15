@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import { DataAccess } from "lib/Utils/Api";
-import { UserService, UserViewPagedCollectionStandardResponse } from "Services";
+import {
+  AdminService,
+  UserService,
+  UserViewPagedCollectionStandardResponse,
+} from "Services";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 
@@ -18,17 +22,14 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
     let users;
     let pageData;
     try {
-      const data = (await UserService.listUsers(
-        pagingOptions.offset,
-        pagingOptions.limit
-      )) as UserViewPagedCollectionStandardResponse;
-      users = data.data?.value;
+      const data = await AdminService.listServices();
+      // console.log({ data });
       pageData = data.data;
     } catch (error) {}
 
     if (!id) {
       //@ts-ignore
-      const firstUser = users[0];
+      const firstUser = pageData[0];
       return {
         redirect: {
           permanent: false,

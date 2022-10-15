@@ -4,7 +4,7 @@
 
 export type WalletView = {
     userId?: number;
-    balance?: number;
+    balance?: string | null;
     currency?: string | null;
     walletType?: string | null;
 };

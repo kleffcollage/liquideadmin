@@ -19,12 +19,14 @@ import ValueBox from "../Utilities/ValueBox";
 import SearchComponent from "../Utilities/SearchComponent";
 import { useRouter } from "next/router";
 import Switcher from "../Utilities/Switcher";
-import { UserService, UserView } from "Services";
+import { AdminService, Service, UserService, UserView } from "Services";
 import { useToasts } from "react-toast-notifications";
 import UserPagination from "./UserPagination";
 import LineChart from "../Charts/LineChart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SwitcherWithBtn from "../Utilities/SwitcherWithBtn";
+import { PrimaryInput } from "../Utilities/PrimaryInput";
+import { useForm } from "react-hook-form";
 
 function Services({
   result,
@@ -37,24 +39,67 @@ function Services({
   const router = useRouter();
   const { addToast } = useToasts();
   const serviceProfile = singleService.data;
+  const [serviceInput, setServiceInput] = useState(serviceProfile);
 
   useEffect(() => {
     if (checked !== serviceProfile.isActive) {
       setChecked(serviceProfile.isActive);
     }
+    if (serviceInput.name !== serviceProfile.name) {
+      console.log("here");
+      // setServiceInput(serviceProfile);
+      router.reload();
+    }
   }, [serviceProfile.isActive]);
+
+  console.log({ serviceInput });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<Service>({
+    mode: "all",
+    defaultValues: {
+      id: serviceId,
+      name: serviceProfile.name,
+    },
+  });
+
+  const onSubmit = async (data: Service) => {
+    data.isActive = checked;
+    console.log({ data });
+    try {
+      const result = await AdminService.updateService(data);
+      if (result.status) {
+        addToast(result.message, {
+          appearance: "success",
+          autoDismiss: true,
+        });
+
+        // router.reload();
+        return;
+      }
+      addToast(result.message, { appearance: "error", autoDismiss: true });
+      return;
+    } catch (error) {
+      console.log(error);
+      addToast("Check your network connection and try again", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
+  };
   return (
     <HStack spacing="1rem" h="auto" alignItems="flex-start">
       <Box w="20%" bgColor="white" minH="90vh" h="100%" pos="relative">
-        <SearchComponent border={true} />
+        <SearchComponent border={false} />
         <Box>
-          {result.map((service: UserView) => {
+          {result.map((service: Service) => {
             return (
               <Box
                 onClick={() => {
                   router.push({
                     pathname: `/admin/services/${service.id}`,
-                    query: { ...router.query },
                   });
                 }}
                 key={service.id}
@@ -77,7 +122,7 @@ function Services({
                     fontWeight="bold"
                     _groupHover={{ color: "white" }}
                   >
-                    {service.fullName}
+                    {service.name}
                   </Text>
                   <Icon as={BiCheck} color="rgba(0,255,0,1)" />
                 </Flex>
@@ -85,7 +130,7 @@ function Services({
             );
           })}
         </Box>
-        <UserPagination allUsers={allServices} />
+        {/* <UserPagination allUsers={allServices} /> */}
       </Box>
       <Box w="80%" bgColor="white" p="1.5rem" minH="90vh">
         <Flex fontWeight="bold" flexDirection="column">
@@ -97,10 +142,15 @@ function Services({
             borderRadius="5px"
             mb="1rem"
           >
-            <Image src="" w="full" h="auto" objectFit="cover" />
+            <Image
+              src={serviceProfile?.imageUrl}
+              w="full"
+              h="auto"
+              objectFit="cover"
+            />
           </Square>
           <Box>
-            <Text fontSize="1.5rem">DSTV Subscription</Text>
+            <Text fontSize="1.5rem">{serviceProfile.name}</Text>
           </Box>
         </Flex>
         <Flex justifyContent="space-between" my="1rem" align="center">
@@ -224,27 +274,38 @@ function Services({
         <Box w="40%">
           <VStack spacing="1rem" alignItems="flex-start" w="full" mt="2rem">
             <SimpleGrid columns={2}>
-              <GridItem colSpan={2}>
-                <Text fontSize=".9rem" fontWeight="600">
-                  Service Name
-                </Text>
-              </GridItem>
-              <GridItem colSpan={2}>
-                <Input
-                  defaultValue="Dstv Subscription"
-                  type="text"
-                  height="3rem"
-                  variant="filled"
-                  disabled
-                />
-              </GridItem>
-              <GridItem colSpan={2}>
-                <SwitcherWithBtn
-                  checked={checked}
-                  user={serviceProfile}
-                  setChecked={setChecked}
-                />
-              </GridItem>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <GridItem colSpan={2}>
+                  <Text fontSize=".9rem" fontWeight="600">
+                    Service Name
+                  </Text>
+                </GridItem>
+                <GridItem colSpan={2}>
+                  <PrimaryInput<Service>
+                    register={register}
+                    name="name"
+                    error={errors.name}
+                    defaultValue={serviceInput?.name}
+                    type="text"
+                    placeholder=""
+                  />
+                </GridItem>
+                <GridItem colSpan={2}>
+                  <SwitcherWithBtn
+                    checked={checked}
+                    user={serviceProfile}
+                    setChecked={setChecked}
+                  />
+                  <Button
+                    w="full"
+                    height="3rem"
+                    isLoading={isSubmitting}
+                    type="submit"
+                  >
+                    Update
+                  </Button>
+                </GridItem>
+              </form>
             </SimpleGrid>
           </VStack>
         </Box>

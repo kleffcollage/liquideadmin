@@ -20,7 +20,11 @@ import TxnPaginate from "lib/components/Utilities/TxnPaginate";
 import Naira from "lib/Utils/Naira";
 import { useState } from "react";
 import { MdFilterList } from "react-icons/md";
-import { TransactionView, TransactionViewPagedCollection } from "Services";
+import {
+  AdminService,
+  TransactionView,
+  TransactionViewPagedCollection,
+} from "Services";
 import { PagedCollection } from "types/AppTypes";
 const moment = require("moment");
 import Skeleton from "react-loading-skeleton";
@@ -102,6 +106,7 @@ function Transactions({ transaction, id }: transactionProps) {
           data={allTxn as PagedCollection}
           setTxn={setAllTxn}
           id={id}
+          api={AdminService.listUsersTransaction}
           setLoading={setLoading}
         />
       </Box>

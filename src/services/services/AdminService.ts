@@ -1,6 +1,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { LoanTypeListStandardResponse } from '../models/LoanTypeListStandardResponse';
+import type { LoanTypeStandardResponse } from '../models/LoanTypeStandardResponse';
 import type { LoanViewPagedCollectionStandardResponse } from '../models/LoanViewPagedCollectionStandardResponse';
 import type { LoanViewStandardResponse } from '../models/LoanViewStandardResponse';
 import type { LoginModel } from '../models/LoginModel';
@@ -9,6 +11,9 @@ import type { SavingPlanType } from '../models/SavingPlanType';
 import type { SavingPlanTypeStandardResponse } from '../models/SavingPlanTypeStandardResponse';
 import type { SavingPlanTypeViewListStandardResponse } from '../models/SavingPlanTypeViewListStandardResponse';
 import type { SavingPlanTypeViewStandardResponse } from '../models/SavingPlanTypeViewStandardResponse';
+import type { Service } from '../models/Service';
+import type { ServiceListStandardResponse } from '../models/ServiceListStandardResponse';
+import type { ServiceStandardResponse } from '../models/ServiceStandardResponse';
 import type { TransactionViewPagedCollectionStandardResponse } from '../models/TransactionViewPagedCollectionStandardResponse';
 import type { TransactionViewStandardResponse } from '../models/TransactionViewStandardResponse';
 import type { UserMetricsStandardResponse } from '../models/UserMetricsStandardResponse';
@@ -454,6 +459,97 @@ id: number,
             path: {
                 'id': id,
             },
+        });
+    }
+
+    /**
+     * @returns LoanTypeListStandardResponse Success
+     * @throws ApiError
+     */
+    public static listLoanTypes(): CancelablePromise<LoanTypeListStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/Admin/loantypes',
+        });
+    }
+
+    /**
+     * @param id 
+     * @param interestRate 
+     * @returns LoanTypeStandardResponse Success
+     * @throws ApiError
+     */
+    public static updateInterestRate(
+id: number,
+interestRate: string | null,
+): CancelablePromise<LoanTypeStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/Admin/loan/types/update/{id}/{interestRate}',
+            path: {
+                'id': id,
+                'interestRate': interestRate,
+            },
+        });
+    }
+
+    /**
+     * @param requestBody 
+     * @returns ServiceStandardResponse Success
+     * @throws ApiError
+     */
+    public static createService(
+requestBody?: Service,
+): CancelablePromise<ServiceStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/Admin/service/create',
+            body: requestBody,
+            mediaType: 'application/json-patch+json',
+        });
+    }
+
+    /**
+     * @returns ServiceListStandardResponse Success
+     * @throws ApiError
+     */
+    public static listServices(): CancelablePromise<ServiceListStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/Admin/services',
+        });
+    }
+
+    /**
+     * @param id 
+     * @returns ServiceStandardResponse Success
+     * @throws ApiError
+     */
+    public static getService(
+id: number,
+): CancelablePromise<ServiceStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/Admin/services/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
+     * @param requestBody 
+     * @returns ServiceStandardResponse Success
+     * @throws ApiError
+     */
+    public static updateService(
+requestBody?: Service,
+): CancelablePromise<ServiceStandardResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/Admin/services/update',
+            body: requestBody,
+            mediaType: 'application/json-patch+json',
         });
     }
 

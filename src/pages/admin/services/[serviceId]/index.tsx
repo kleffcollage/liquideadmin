@@ -29,7 +29,7 @@ function ServicesDetails({
 }) {
   const router = useRouter();
 
-  const result = allServices.value;
+  const result = allServices;
   const [checked, setChecked] = useState<boolean>(
     singleService?.data.isActive || false
   );
@@ -55,10 +55,8 @@ export const getServerSideProps: GetServerSideProps = withPageAuthRequired(
     const serviceId = ctx.query.serviceId;
 
     try {
-      const allServices = (
-        await UserService.listUsers(pagingOptions.offset, pagingOptions.limit, pagingOptions.search)
-      ).data as UserViewPagedCollectionStandardResponse;
-      const singleService = (await AdminService.getUserById(
+      const allServices = (await AdminService.listServices()).data;
+      const singleService = (await AdminService.getService(
         serviceId
       )) as UserViewPagedCollectionStandardResponse;
 

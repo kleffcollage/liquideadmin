@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Loan } from './Loan';
+import type { LoanInstallment } from './LoanInstallment';
 import type { PaymentLog } from './PaymentLog';
 import type { SavingPlans } from './SavingPlans';
 import type { Status } from './Status';
@@ -26,4 +28,8 @@ export type Transaction = {
     channel?: string | null;
     provider?: string | null;
     plan?: SavingPlans;
+    loanId?: number | null;
+    loan?: Loan;
+    loanInstallmentId?: number | null;
+    loanInstallment?: LoanInstallment;
 };

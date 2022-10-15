@@ -31,7 +31,7 @@ interface FormInputProps<TFormValues extends Record<string, unknown>> {
   borderColor?: string;
   borderRadius?: string;
   placeholderColor?: string;
-  defaultValue: string | number | undefined;
+  defaultValue?: string | number | undefined;
   format?: string;
   value?: string | number | undefined;
   testId?: string;

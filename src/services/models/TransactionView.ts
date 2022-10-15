@@ -5,7 +5,6 @@
 import type { UserView } from './UserView';
 
 export type TransactionView = {
-    selected: any;
     id?: number;
     userId?: number;
     transactionReference?: string | null;

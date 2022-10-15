@@ -2,8 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type FundWalletModel = {
+export type LoanRePaymentModel = {
     amount?: string | null;
-    userId?: number;
+    loanId?: number;
+    installmentId?: number;
     mobile?: boolean;
 };

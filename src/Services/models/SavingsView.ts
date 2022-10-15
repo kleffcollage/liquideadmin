@@ -5,6 +5,7 @@
 import type { UserView } from './UserView';
 
 export type SavingsView = {
+    id?: number;
     name?: string | null;
     description?: string | null;
     savingPlanType?: string | null;

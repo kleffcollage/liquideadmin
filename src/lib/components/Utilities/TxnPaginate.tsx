@@ -1,7 +1,6 @@
 import { Button, Flex, Icon, Square, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { AdminService } from "Services";
 import { PagedCollection } from "types/AppTypes";
 
 interface PaginationProps {
@@ -10,6 +9,7 @@ interface PaginationProps {
   justify?: string | undefined;
   setTxn?: any;
   id?: any;
+  api?: any;
   setLoading?: any;
 }
 
@@ -19,6 +19,7 @@ function Pagination({
   justify = "flex-end",
   setTxn,
   id,
+  api,
   setLoading,
 }: PaginationProps) {
   const totalPages = Math.ceil(
@@ -40,7 +41,7 @@ function Pagination({
       const limit = url.searchParams.get("limit");
       const offset = url.searchParams.get("offset");
       setLoading(true);
-      const getPrev = await AdminService.listUsersTransaction(
+      const getPrev = await api(
         id,
         offset as unknown as number,
         limit as unknown as number
@@ -56,7 +57,7 @@ function Pagination({
       const limit = url.searchParams.get("limit");
       const offset = url.searchParams.get("offset");
       setLoading(true);
-      const getNext = await AdminService.listUsersTransaction(
+      const getNext = await api(
         id,
         offset as unknown as number,
         limit as unknown as number
