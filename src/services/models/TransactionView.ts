@@ -17,4 +17,5 @@ export type TransactionView = {
     user?: UserView;
     channel?: string | null;
     provider?: string | null;
+    selected?: boolean
 };
