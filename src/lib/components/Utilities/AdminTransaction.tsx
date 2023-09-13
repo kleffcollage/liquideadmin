@@ -29,7 +29,7 @@ import { BsSearch } from "react-icons/bs";
 import {
   TransactionView,
   TransactionViewPagedCollectionStandardResponse,
-} from "Services";
+} from "services";
 import { PagedCollection } from "types/AppTypes";
 import { TableCheckbox } from "./TableCheckbox";
 import TableNoContentWrapper from "./TableNoContentWrapper";

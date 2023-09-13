@@ -7,7 +7,7 @@ import React from "react";
 import {
   AdminService,
   TransactionViewPagedCollectionStandardResponse,
-} from "Services";
+} from "services";
 
 function transactions({
   data,

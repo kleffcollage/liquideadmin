@@ -1,7 +1,7 @@
 import { Box, Flex, VStack, Text, Heading, Grid } from "@chakra-ui/react";
 import Naira from "lib/Utils/Naira";
 import React from "react";
-import { SavingPlanTypeView } from "Services";
+import { SavingPlanTypeView } from "services";
 
 function Statistics({ plan }: { plan: SavingPlanTypeView }) {
   return (

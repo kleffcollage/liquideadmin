@@ -23,7 +23,7 @@ import {
   LoginModel,
   OpenAPI,
   UserViewStandardResponse,
-} from "Services";
+} from "services";
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),

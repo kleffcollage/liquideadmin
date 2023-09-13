@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
-import { UserView } from "Services";
+import { UserView } from "services";
 import UserPagination from "../Utils/UserPagination";
 import SearchComponent from "./SearchComponent";
 

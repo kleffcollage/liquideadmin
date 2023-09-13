@@ -15,7 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { AdminService, Register, UserViewStandardResponse } from "Services";
+import { AdminService, Register, UserViewStandardResponse } from "Services/index";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";

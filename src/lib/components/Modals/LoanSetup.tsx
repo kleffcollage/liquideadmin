@@ -19,7 +19,7 @@ import { Router, useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
-import { AdminService, LoanType, LoanTypeListStandardResponse } from "Services";
+import { AdminService, LoanType, LoanTypeListStandardResponse } from "services";
 import { LoginModel } from "types/AppTypes";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 

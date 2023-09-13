@@ -3,7 +3,7 @@ import Switcher from "lib/components/Utilities/Switcher";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { UserService, UserView, UserViewStandardResponse } from "Services";
+import { UserService, UserView, UserViewStandardResponse } from "services";
 
 interface ProfileType {
   user: UserView | undefined;
@@ -92,11 +92,7 @@ function Profile({ user, setChecked, checked }: ProfileType) {
           >
             {user?.isActive == true ? "Account Active" : "Account Inactive"}
           </Text>
-          <Switcher
-            checked={checked}
-            user={user}
-            setChecked={setChecked}
-          />
+          <Switcher checked={checked} user={user} setChecked={setChecked} />
         </Flex>
       </VStack>
     </Flex>

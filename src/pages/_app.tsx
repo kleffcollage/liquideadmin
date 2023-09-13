@@ -12,7 +12,7 @@ import { ToastProvider } from "react-toast-notifications";
 import Layout from "lib/layout";
 import { UserProvider } from "lib/Utils/MainContext";
 import Cookies from "js-cookie";
-import { OpenAPI } from "Services";
+import { OpenAPI } from "services";
 import NextNProgress from "nextjs-progressbar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

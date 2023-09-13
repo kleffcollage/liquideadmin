@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
-import { AdminService, SavingPlanType } from "Services";
+import { AdminService, SavingPlanType } from "services";
 
 function Setup({ data }: { data: SavingPlanType }) {
   const { addToast } = useToasts();

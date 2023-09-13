@@ -4,7 +4,7 @@ import { DataAccess } from "lib/Utils/Api";
 import {
   AdminService,
   UserViewPagedCollectionStandardResponse,
-} from "Services";
+} from "services";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 

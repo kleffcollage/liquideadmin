@@ -3,7 +3,7 @@ import withAuth from "lib/components/Utilities/Auth";
 import Auth from "lib/components/Utilities/Auth";
 import Dashboard from "lib/components/Utils/Dashboard";
 import { GetServerSideProps } from "next";
-import { AdminService, UserMetricsStandardResponse } from "Services";
+import { AdminService, UserMetricsStandardResponse } from "services";
 
 function dashboard({ data }: { data: UserMetricsStandardResponse }) {
   return <Dashboard data={data} />;

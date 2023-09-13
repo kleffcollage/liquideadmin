@@ -68,7 +68,7 @@ function SideNav() {
 					icon="fa-building"
 				/> */}
         <AdminMenu text="Payments" url="/admin/payments" icon="fa-money-bill" />
-        <AdminMenu text="Services" url="/admin/services" icon="fa-window" />
+        <AdminMenu text="services" url="/admin/services" icon="fa-window" />
         <AdminMenu text="Settings" url="/admin/settings" icon="fa-cog" />
         <Logout />
       </VStack>

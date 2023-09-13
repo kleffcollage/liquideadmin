@@ -2,7 +2,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { UserService } from "Services";
+import { UserService } from "services";
 
 function Switcher({ checked, user, setChecked }: any) {
   const { addToast } = useToasts();

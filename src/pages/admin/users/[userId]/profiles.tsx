@@ -5,7 +5,7 @@ import {
   AdminService,
   UserService,
   UserViewPagedCollectionStandardResponse,
-} from "Services";
+} from "services";
 import { useRouter } from "next/router";
 import Profile from "lib/components/Utils/UsersTab/Profile";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";

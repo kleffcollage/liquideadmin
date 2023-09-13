@@ -12,7 +12,7 @@ import {
   AdminService,
   LoanTypeListStandardResponse,
   LoanViewPagedCollectionStandardResponse,
-} from "Services";
+} from "services";
 
 interface loanType {
   request: LoanViewPagedCollectionStandardResponse;

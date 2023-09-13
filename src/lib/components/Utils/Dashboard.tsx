@@ -15,7 +15,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { UserMetricsStandardResponse } from "Services";
+import { UserMetricsStandardResponse } from "services";
 import { BarChart } from "../Charts/BarChart";
 import Donut from "../Charts/Donut";
 import LineChart from "../Charts/LineChart";
