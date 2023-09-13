@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { User } from './user';
+import { User } from "types/api/user";
 
 export interface Code {
   id?: number;

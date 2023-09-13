@@ -5,8 +5,9 @@
 import { Status } from "types/api/status";
 import type { LoanInstallment } from "./LoanInstallment";
 import type { LoanType } from "./LoanType";
+import { User } from "types/api/user";
 // import type { Status } from 'types/api/status';
-import type { User } from "./User";
+// import type { User } from "./User";
 
 export type Loan = {
   id?: number;
