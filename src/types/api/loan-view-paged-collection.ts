@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { Link } from './link';
-import { LoanView } from './loan-view';
+import { Link } from "types/api/link";
+import { LoanView } from "./loan-view";
 
 export interface LoanViewPagedCollection {
   offset?: null | number;

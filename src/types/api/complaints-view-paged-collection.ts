@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { ComplaintsView } from './complaints-view';
-import { Link } from './link';
+import { ComplaintsView } from "./complaints-view";
+import { Link } from "types/api/link";
 
 export interface ComplaintsViewPagedCollection {
   offset?: null | number;

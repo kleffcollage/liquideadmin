@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { Link } from './link';
-import { UserView } from './user-view';
+import { Link } from "types/api/link";
+import { UserView } from "./user-view";
 
 export interface UserViewPagedCollection {
   offset?: null | number;
