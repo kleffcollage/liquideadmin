@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { Card } from "./card";
+import { Card } from "types/api/card";
 import { SavingPlanType } from "./saving-plan-type";
 import { Status } from "types/api/status";
 import { User } from "./user";

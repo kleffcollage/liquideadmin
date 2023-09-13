@@ -2,10 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Card } from "./Card";
+// import type { Card } from "types/api/card";
 import type { SavingPlanType } from "./SavingPlanType";
 import type { Status } from "types/api/status";
 import type { User } from "./User";
+import { Card } from "types/api/card";
 
 export type SavingPlans = {
   id?: number;

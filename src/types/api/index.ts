@@ -75,7 +75,7 @@ export * from "./billsmultichoiceprovider-bouquets-service-type-response";
 export * from "./billsmultichoicerenew-subscription-request";
 export * from "./billsmultichoicerenew-subscription-response";
 export * from "./cable-subscription-model";
-export * from "./card";
+export * from "types/api/card";
 export * from "./card-view";
 export * from "./card-view-i-enumerable-standard-response";
 export * from "./code";
