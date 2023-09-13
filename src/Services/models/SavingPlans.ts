@@ -5,8 +5,9 @@
 // import type { Card } from "types/api/card";
 import type { SavingPlanType } from "./SavingPlanType";
 import type { Status } from "types/api/status";
-import type { User } from "./User";
+// import type { User } from "types/api/user";
 import { Card } from "types/api/card";
+import { User } from "types/api/user";
 
 export type SavingPlans = {
   id?: number;

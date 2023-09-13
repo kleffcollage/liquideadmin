@@ -2,7 +2,7 @@
 import { Card } from "types/api/card";
 import { SavingPlanType } from "./saving-plan-type";
 import { Status } from "types/api/status";
-import { User } from "./user";
+import { User } from "types/api/user";
 
 export interface SavingPlans {
   id?: number;

@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import type { Status } from "types/api/status";
-import type { User } from "./User";
+import type { User } from "types/api/user";
 
 export type Wallet = {
   id?: number;

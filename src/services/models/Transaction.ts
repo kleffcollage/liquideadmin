@@ -7,7 +7,7 @@ import type { LoanInstallment } from "./LoanInstallment";
 import type { PaymentLog } from "./PaymentLog";
 import type { SavingPlans } from "./SavingPlans";
 import type { Status } from "types/api/status";
-import type { User } from "./User";
+import type { User } from "types/api/user";
 
 export type Transaction = {
   id?: number;

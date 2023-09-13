@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { Status } from "types/api/status";
-import { User } from "./user";
+import { User } from "types/api/user";
 
 export interface Wallet {
   id?: number;

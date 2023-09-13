@@ -151,7 +151,7 @@ export * from "./transaction-view-paged-collection";
 export * from "./transaction-view-paged-collection-standard-response";
 export * from "./transaction-view-standard-response";
 export * from "./update-user-model";
-export * from "./user";
+export * from "types/api/user";
 export * from "./user-metrics";
 export * from "./user-metrics-standard-response";
 export * from "./user-metrics-view";

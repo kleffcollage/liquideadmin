@@ -2,7 +2,7 @@
 import { PaymentLog } from "./payment-log";
 import { SavingPlans } from "./saving-plans";
 import { Status } from "types/api/status";
-import { User } from "./user";
+import { User } from "types/api/user";
 
 export interface Transaction {
   id?: number;
