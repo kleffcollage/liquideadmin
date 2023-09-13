@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BeneficiaryModel } from "../models/BeneficiaryModel";
-import type { BeneficiaryViewIEnumerableStandardResponse } from "../models/BeneficiaryViewIEnumerableStandardResponse";
-import type { BeneficiaryViewStandardResponse } from "../models/BeneficiaryViewStandardResponse";
+import type { BeneficiaryModel } from "./models/BeneficiaryModel";
+import type { BeneficiaryViewIEnumerableStandardResponse } from "./models/BeneficiaryViewIEnumerableStandardResponse";
+import type { BeneficiaryViewStandardResponse } from "./models/BeneficiaryViewStandardResponse";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class BeneficiaryService {
   /**

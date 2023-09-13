@@ -1,18 +1,18 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { LoginModel } from "../models/LoginModel";
-import type { PasswordReset } from "../models/PasswordReset";
-import type { PasswordResetModel } from "../models/PasswordResetModel";
-import type { Register } from "../models/Register";
-import type { UpdateUserModel } from "../models/UpdateUserModel";
-import type { UserViewIEnumerableStandardResponse } from "../models/UserViewIEnumerableStandardResponse";
-import type { UserViewPagedCollectionStandardResponse } from "../models/UserViewPagedCollectionStandardResponse";
-import type { UserViewStandardResponse } from "../models/UserViewStandardResponse";
+import type { LoginModel } from "./models/LoginModel";
+import type { PasswordReset } from "./models/PasswordReset";
+import type { PasswordResetModel } from "./models/PasswordResetModel";
+import type { Register } from "./models/Register";
+import type { UpdateUserModel } from "./models/UpdateUserModel";
+import type { UserViewIEnumerableStandardResponse } from "./models/UserViewIEnumerableStandardResponse";
+import type { UserViewPagedCollectionStandardResponse } from "./models/UserViewPagedCollectionStandardResponse";
+import type { UserViewStandardResponse } from "./models/UserViewStandardResponse";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class UserService {
   /**

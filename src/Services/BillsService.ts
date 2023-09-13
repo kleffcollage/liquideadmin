@@ -1,22 +1,22 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { AirtimePurchaseInput } from "../models/AirtimePurchaseInput";
-import type { AirtimePurchaseViewStandardResponse } from "../models/AirtimePurchaseViewStandardResponse";
-import type { BaxiProvidersResponseStandardResponse } from "../models/BaxiProvidersResponseStandardResponse";
-import type { CableSubscriptionModel } from "../models/CableSubscriptionModel";
-import type { DataBundlePurchaseInput } from "../models/DataBundlePurchaseInput";
-import type { DataProviderResponseStandardResponse } from "../models/DataProviderResponseStandardResponse";
-import type { MultichoiceAccountResponseStandardResponse } from "../models/MultichoiceAccountResponseStandardResponse";
-import type { ProviderBouquetResponseListStandardResponse } from "../models/ProviderBouquetResponseListStandardResponse";
-import type { ProviderBundleResponseListStandardResponse } from "../models/ProviderBundleResponseListStandardResponse";
-import type { PurchaseElectricityModel } from "../models/PurchaseElectricityModel";
-import type { StringStandardResponse } from "../models/StringStandardResponse";
-import type { SubscriptionModel } from "../models/SubscriptionModel";
+import type { AirtimePurchaseInput } from "./models/AirtimePurchaseInput";
+import type { AirtimePurchaseViewStandardResponse } from "./models/AirtimePurchaseViewStandardResponse";
+import type { BaxiProvidersResponseStandardResponse } from "./models/BaxiProvidersResponseStandardResponse";
+import type { CableSubscriptionModel } from "./models/CableSubscriptionModel";
+import type { DataBundlePurchaseInput } from "./models/DataBundlePurchaseInput";
+import type { DataProviderResponseStandardResponse } from "./models/DataProviderResponseStandardResponse";
+import type { MultichoiceAccountResponseStandardResponse } from "./models/MultichoiceAccountResponseStandardResponse";
+import type { ProviderBouquetResponseListStandardResponse } from "./models/ProviderBouquetResponseListStandardResponse";
+import type { ProviderBundleResponseListStandardResponse } from "./models/ProviderBundleResponseListStandardResponse";
+import type { PurchaseElectricityModel } from "./models/PurchaseElectricityModel";
+import type { StringStandardResponse } from "./models/StringStandardResponse";
+import type { SubscriptionModel } from "./models/SubscriptionModel";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class BillsService {
   /**

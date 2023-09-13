@@ -1,17 +1,17 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Int32StandardResponse } from "../models/Int32StandardResponse";
-import type { LiquedeSealInput } from "../models/LiquedeSealInput";
-import type { LiquiedeGoalInput } from "../models/LiquiedeGoalInput";
-import type { SavingPlanTypeIEnumerableStandardResponse } from "../models/SavingPlanTypeIEnumerableStandardResponse";
-import type { SavingsViewIEnumerableStandardResponse } from "../models/SavingsViewIEnumerableStandardResponse";
-import type { SavingsViewStandardResponse } from "../models/SavingsViewStandardResponse";
-import type { SavingsWithdrawalModel } from "../models/SavingsWithdrawalModel";
+import type { Int32StandardResponse } from "./models/Int32StandardResponse";
+import type { LiquedeSealInput } from "./models/LiquedeSealInput";
+import type { LiquiedeGoalInput } from "./models/LiquiedeGoalInput";
+import type { SavingPlanTypeIEnumerableStandardResponse } from "./models/SavingPlanTypeIEnumerableStandardResponse";
+import type { SavingsViewIEnumerableStandardResponse } from "./models/SavingsViewIEnumerableStandardResponse";
+import type { SavingsViewStandardResponse } from "./models/SavingsViewStandardResponse";
+import type { SavingsWithdrawalModel } from "./models/SavingsWithdrawalModel";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class SavingsService {
   /**

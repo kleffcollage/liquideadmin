@@ -1,22 +1,22 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CardViewIEnumerableStandardResponse } from "../models/CardViewIEnumerableStandardResponse";
-import type { DebitWalletModel } from "../models/DebitWalletModel";
-import type { FundWalletModel } from "../models/FundWalletModel";
-import type { Int32StandardResponse } from "../models/Int32StandardResponse";
-import type { NGNTransferModel } from "../models/NGNTransferModel";
-import type { PaymentViewStandardResponse } from "../models/PaymentViewStandardResponse";
-import type { StringStandardResponse } from "../models/StringStandardResponse";
-import type { TransactionViewPagedCollectionStandardResponse } from "../models/TransactionViewPagedCollectionStandardResponse";
-import type { WalletModel } from "../models/WalletModel";
-import type { WalletPinModel } from "../models/WalletPinModel";
-import type { WalletTransferModel } from "../models/WalletTransferModel";
-import type { WalletViewStandardResponse } from "../models/WalletViewStandardResponse";
+import type { CardViewIEnumerableStandardResponse } from "./models/CardViewIEnumerableStandardResponse";
+import type { DebitWalletModel } from "./models/DebitWalletModel";
+import type { FundWalletModel } from "./models/FundWalletModel";
+import type { Int32StandardResponse } from "./models/Int32StandardResponse";
+import type { NGNTransferModel } from "./models/NGNTransferModel";
+import type { PaymentViewStandardResponse } from "./models/PaymentViewStandardResponse";
+import type { StringStandardResponse } from "./models/StringStandardResponse";
+import type { TransactionViewPagedCollectionStandardResponse } from "./models/TransactionViewPagedCollectionStandardResponse";
+import type { WalletModel } from "./models/WalletModel";
+import type { WalletPinModel } from "./models/WalletPinModel";
+import type { WalletTransferModel } from "./models/WalletTransferModel";
+import type { WalletViewStandardResponse } from "./models/WalletViewStandardResponse";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class WalletService {
   /**
