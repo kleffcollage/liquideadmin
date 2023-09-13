@@ -10,9 +10,9 @@ import type { UserViewIEnumerableStandardResponse } from "../models/UserViewIEnu
 import type { UserViewPagedCollectionStandardResponse } from "../models/UserViewPagedCollectionStandardResponse";
 import type { UserViewStandardResponse } from "../models/UserViewStandardResponse";
 
-import type { CancelablePromise } from "Services/core/CancelablePromise";
-import { OpenAPI } from "Services/core/OpenAPI";
-import { request as __request } from "Services/core/request";
+import type { CancelablePromise } from "../core/CancelablePromise";
+import { OpenAPI } from "../core/OpenAPI";
+import { request as __request } from "../core/request";
 
 export class UserService {
   /**
