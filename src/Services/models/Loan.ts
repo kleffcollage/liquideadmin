@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
 import type { LoanInstallment } from './LoanInstallment';
 import type { LoanType } from './LoanType';
