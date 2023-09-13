@@ -1,8 +1,8 @@
 /* tslint:disable */
-import { PaymentLog } from './payment-log';
-import { SavingPlans } from './saving-plans';
-import { Status } from './status';
-import { User } from './user';
+import { PaymentLog } from "./payment-log";
+import { SavingPlans } from "./saving-plans";
+import { Status } from "types/api/status";
+import { User } from "./user";
 
 export interface Transaction {
   id?: number;

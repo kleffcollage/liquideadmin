@@ -1,8 +1,8 @@
 /* tslint:disable */
-import { Card } from './card';
-import { SavingPlanType } from './saving-plan-type';
-import { Status } from './status';
-import { User } from './user';
+import { Card } from "./card";
+import { SavingPlanType } from "./saving-plan-type";
+import { Status } from "types/api/status";
+import { User } from "./user";
 
 export interface SavingPlans {
   id?: number;
