@@ -1,28 +1,28 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { LoanTypeListStandardResponse } from "../models/LoanTypeListStandardResponse";
-import type { LoanTypeStandardResponse } from "../models/LoanTypeStandardResponse";
-import type { LoanViewPagedCollectionStandardResponse } from "../models/LoanViewPagedCollectionStandardResponse";
-import type { LoanViewStandardResponse } from "../models/LoanViewStandardResponse";
-import type { LoginModel } from "../models/LoginModel";
-import type { Register } from "../models/Register";
-import type { SavingPlanType } from "../models/SavingPlanType";
-import type { SavingPlanTypeStandardResponse } from "../models/SavingPlanTypeStandardResponse";
-import type { SavingPlanTypeViewListStandardResponse } from "../models/SavingPlanTypeViewListStandardResponse";
-import type { SavingPlanTypeViewStandardResponse } from "../models/SavingPlanTypeViewStandardResponse";
-import type { Service } from "../models/Service";
-import type { ServiceListStandardResponse } from "../models/ServiceListStandardResponse";
-import type { ServiceStandardResponse } from "../models/ServiceStandardResponse";
-import type { TransactionViewPagedCollectionStandardResponse } from "../models/TransactionViewPagedCollectionStandardResponse";
-import type { TransactionViewStandardResponse } from "../models/TransactionViewStandardResponse";
-import type { UserMetricsStandardResponse } from "../models/UserMetricsStandardResponse";
-import type { UserViewPagedCollectionStandardResponse } from "../models/UserViewPagedCollectionStandardResponse";
-import type { UserViewStandardResponse } from "../models/UserViewStandardResponse";
+import type { LoanTypeListStandardResponse } from "./models/LoanTypeListStandardResponse";
+import type { LoanTypeStandardResponse } from "./models/LoanTypeStandardResponse";
+import type { LoanViewPagedCollectionStandardResponse } from "./models/LoanViewPagedCollectionStandardResponse";
+import type { LoanViewStandardResponse } from "./models/LoanViewStandardResponse";
+import type { LoginModel } from "./models/LoginModel";
+import type { Register } from "./models/Register";
+import type { SavingPlanType } from "./models/SavingPlanType";
+import type { SavingPlanTypeStandardResponse } from "./models/SavingPlanTypeStandardResponse";
+import type { SavingPlanTypeViewListStandardResponse } from "./models/SavingPlanTypeViewListStandardResponse";
+import type { SavingPlanTypeViewStandardResponse } from "./models/SavingPlanTypeViewStandardResponse";
+import type { Service } from "./models/Service";
+import type { ServiceListStandardResponse } from "./models/ServiceListStandardResponse";
+import type { ServiceStandardResponse } from "./models/ServiceStandardResponse";
+import type { TransactionViewPagedCollectionStandardResponse } from "./models/TransactionViewPagedCollectionStandardResponse";
+import type { TransactionViewStandardResponse } from "./models/TransactionViewStandardResponse";
+import type { UserMetricsStandardResponse } from "./models/UserMetricsStandardResponse";
+import type { UserViewPagedCollectionStandardResponse } from "./models/UserViewPagedCollectionStandardResponse";
+import type { UserViewStandardResponse } from "./models/UserViewStandardResponse";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class AdminService {
   /**

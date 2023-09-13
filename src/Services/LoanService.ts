@@ -1,15 +1,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { LoanModel } from "../models/LoanModel";
-import type { LoanRePaymentModel } from "../models/LoanRePaymentModel";
-import type { LoanViewIEnumerableStandardResponse } from "../models/LoanViewIEnumerableStandardResponse";
-import type { LoanViewStandardResponse } from "../models/LoanViewStandardResponse";
-import type { StringStandardResponse } from "../models/StringStandardResponse";
+import type { LoanModel } from "./models/LoanModel";
+import type { LoanRePaymentModel } from "./models/LoanRePaymentModel";
+import type { LoanViewIEnumerableStandardResponse } from "./models/LoanViewIEnumerableStandardResponse";
+import type { LoanViewStandardResponse } from "./models/LoanViewStandardResponse";
+import type { StringStandardResponse } from "./models/StringStandardResponse";
 
-import type { CancelablePromise } from "../core/CancelablePromise";
-import { OpenAPI } from "../core/OpenAPI";
-import { request as __request } from "../core/request";
+import type { CancelablePromise } from "./core/CancelablePromise";
+import { OpenAPI } from "./core/OpenAPI";
+import { request as __request } from "./core/request";
 
 export class LoanService {
   /**
