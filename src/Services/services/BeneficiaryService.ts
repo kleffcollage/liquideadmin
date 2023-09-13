@@ -5,9 +5,9 @@ import type { BeneficiaryModel } from '../models/BeneficiaryModel';
 import type { BeneficiaryViewIEnumerableStandardResponse } from '../models/BeneficiaryViewIEnumerableStandardResponse';
 import type { BeneficiaryViewStandardResponse } from '../models/BeneficiaryViewStandardResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { CancelablePromise } from 'Services/core/CancelablePromise';
+import { OpenAPI } from 'Services/core/OpenAPI';
+import { request as __request } from 'Services/core/request';
 
 export class BeneficiaryService {
 
