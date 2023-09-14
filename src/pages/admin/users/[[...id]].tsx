@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import { DataAccess } from "lib/Utils/Api";
-import { UserService, UserViewPagedCollectionStandardResponse } from "services";
+import { UserService, UserViewPagedCollectionStandardResponse } from "Services";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 

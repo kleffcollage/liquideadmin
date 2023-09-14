@@ -1,4 +1,4 @@
-import { OpenAPI } from "services";
+import { OpenAPI } from "../../../Services/core/OpenAPI";
 
 export function withPageAuthRequired(gssp: any) {
   return async (context: any) => {

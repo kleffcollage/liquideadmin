@@ -3,7 +3,7 @@ import LimitTransaction from "lib/components/Modals/LimitTransaction";
 import SuccessModal from "lib/components/Modals/SuccessModal";
 import React, { useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { UserService, UserView } from "services";
+import { UserService, UserView } from "Services";
 
 function Security({ data }: { data: UserView }) {
   const [successOpen, setsuccessOpen] = useState(false);

@@ -35,7 +35,7 @@ import {
   LoanView,
   LoanViewPagedCollectionStandardResponse,
   LoanViewStandardResponse,
-} from "services";
+} from "Services";
 import { PagedCollection } from "types/AppTypes";
 const moment = require("moment");
 

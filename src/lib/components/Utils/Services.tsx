@@ -19,7 +19,7 @@ import ValueBox from "../Utilities/ValueBox";
 import SearchComponent from "../Utilities/SearchComponent";
 import { useRouter } from "next/router";
 import Switcher from "../Utilities/Switcher";
-import { AdminService, Service, UserService, UserView } from "services";
+import { AdminService, Service, UserService, UserView } from "Services";
 import { useToasts } from "react-toast-notifications";
 import UserPagination from "./UserPagination";
 import LineChart from "../Charts/LineChart";

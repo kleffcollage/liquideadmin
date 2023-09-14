@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 import SuccessModal from "./SuccessModal";
 import { useState } from "react";
-import { LoginModel } from "services";
+import { LoginModel } from "Services";
 
 function LimitTransaction({
   isOpen,

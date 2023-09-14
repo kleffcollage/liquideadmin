@@ -18,7 +18,8 @@ import {
 import { useForm } from "react-hook-form";
 import { PrimaryInput } from "../Utilities/PrimaryInput";
 import { Widget } from "@uploadcare/react-widget";
-import { LoginModel } from "services";
+import { LoginModel } from "Services";
+// import { LoginModel } from "Services";
 
 function AddMatch({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
   const {

@@ -24,7 +24,7 @@ import {
   AdminService,
   TransactionView,
   TransactionViewPagedCollection,
-} from "services";
+} from "Services";
 import { PagedCollection } from "types/AppTypes";
 const moment = require("moment");
 import Skeleton from "react-loading-skeleton";

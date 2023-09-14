@@ -6,7 +6,7 @@ import {
   TransactionViewPagedCollectionStandardResponse,
   UserService,
   UserViewPagedCollectionStandardResponse,
-} from "services";
+} from "Services";
 import { filterPagingSearchOptions } from "lib/components/Utilities/Functions/utils";
 import { withPageAuthRequired } from "lib/components/hocs/withPageAuthRequired";
 import withAuth from "lib/components/Utilities/Auth";

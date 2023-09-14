@@ -8,7 +8,7 @@ import {
   UserService,
   UserView,
   UserViewPagedCollectionStandardResponse,
-} from "services";
+} from "Services";
 import { useRouter } from "next/router";
 import Tab from "lib/components/Utilities/Tab";
 import Profile from "lib/components/Utils/UsersTab/Profile";

@@ -3,7 +3,7 @@ import Switcher from "lib/components/Utilities/Switcher";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { UserService, UserView, UserViewStandardResponse } from "services";
+import { UserService, UserView, UserViewStandardResponse } from "Services";
 
 interface ProfileType {
   user: UserView | undefined;
